@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../actions/cartActions';
+import { addToCart, removeFromCart } from '../actions/cartActions';
 import MessageBox from '../components/MessageBox';
 
 export default function CartScreen(props) {
@@ -19,7 +19,7 @@ export default function CartScreen(props) {
 	}, [dispatch, productId, qty]);
 
 	const removeFromCartHandler = (id) => {
-		// delete action
+		dispatch(removeFromCart(id));
 	};
 
 	const checkoutHandler = () => {
@@ -29,23 +29,24 @@ export default function CartScreen(props) {
 		<div className="row top">
 			<div className="cart-col-2">
 				<h1>Shopping Cart</h1>
-				<div className="row border-top-bottom">
-					<div className="item-label">
-						<h2>Item</h2>
-					</div>
-					<div className="price-label">
-						<h2>Price</h2>
-					</div>
-					<div className="quantity-label">
-						<h2>Quantity</h2>
-					</div>
-				</div>
+
 				{cartItems.length === 0 ? (
 					<MessageBox>
-						Cart is empty. <Link to="/">Go Shopping</Link>
+						Cart is empty. <Link to="/products">Go Shopping</Link>
 					</MessageBox>
 				) : (
 					<ul>
+						<div className="row border-top-bottom">
+							<div className="item-label">
+								<h2>Item</h2>
+							</div>
+							<div className="price-label">
+								<h2>Price</h2>
+							</div>
+							<div className="quantity-label">
+								<h2>Quantity</h2>
+							</div>
+						</div>
 						{cartItems.map((item) => (
 							<li key={item.product} className="border">
 								<div className="row">
