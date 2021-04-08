@@ -97,12 +97,24 @@ button.block {
 /* Header */
 header a {
 	color: #ffffff;
-	padding: 1rem;
+	padding: 1rem 2rem;
+	position: relative;
 }
 a.brand {
 	color: #ffffff;
 	font-size: 3rem;
 	font-weight: bold;
+}
+.badge {
+	background-color: #f02020;
+	color: #ffffff;
+	border-radius: 50%;
+	top: -2px;
+	right: -6px;
+	padding: 3px 7px;
+	border-radius: 50%;
+	font-size: 1.3rem;
+	position: absolute;
 }
 .row {
 	display: flex;
