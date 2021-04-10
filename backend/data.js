@@ -16,7 +16,6 @@ const data = {
 	],
 	products: [
 		{
-			_id: '1',
 			price: 549,
 			countInStock: 37,
 			rating: 3.5,
@@ -29,7 +28,6 @@ const data = {
 			__v: 0,
 		},
 		{
-			_id: '2',
 			price: 249,
 			countInStock: 80,
 			rating: 4.1,
@@ -42,7 +40,6 @@ const data = {
 			__v: 0,
 		},
 		{
-			_id: '3',
 			price: 59,
 			countInStock: 186,
 			rating: 4.8,
@@ -55,7 +52,6 @@ const data = {
 			__v: 0,
 		},
 		{
-			_id: '4',
 			price: 239,
 			countInStock: 34,
 			rating: 4.5,
@@ -68,7 +64,6 @@ const data = {
 			__v: 0,
 		},
 		{
-			_id: '5',
 			price: 69,
 			countInStock: 80,
 			rating: 4.5,
@@ -81,7 +76,6 @@ const data = {
 			__v: 0,
 		},
 		{
-			_id: '6',
 			price: 614,
 			countInStock: 21,
 			rating: 4.5,
