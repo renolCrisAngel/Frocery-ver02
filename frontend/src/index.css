@@ -81,15 +81,16 @@ button {
 }
 input:hover,
 select:hover,
-textarea:hover,
-button:hover {
-	border: 0.1rem #404040 solid;
+textarea:hover {
+	border: 0.1rem #0069cb solid;
 }
-button:hover {
-	border: 0.1rem #404040 solid;
+button.primary:hover {
+	background-color: #0069cb;
 }
+
 button.primary {
-	background-color: #f0c040;
+	background-color: #4596ff;
+	color: #ffffff;
 }
 button.block {
 	width: 100%;
@@ -298,4 +299,24 @@ img.large {
 .text {
 	font-size: 3rem;
 	padding: 0%;
+}
+/* Dropdown */
+.dropdown {
+	display: inline-block;
+	position: relative;
+}
+.dropdown-content {
+	position: absolute;
+	display: none;
+	right: 0;
+	min-width: 12rem;
+	padding: 1rem;
+	z-index: 1;
+	background-color: #203040;
+	margin: 0;
+	margin-top: 0.4rem;
+	border-radius: 0.5rem;
+}
+.dropdown:hover .dropdown-content {
+	display: block;
 }
