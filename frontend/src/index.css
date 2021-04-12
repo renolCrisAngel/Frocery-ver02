@@ -52,7 +52,7 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	color: #ff8000;
+	color: #4596ff;
 }
 ul {
 	padding: 0;
@@ -246,6 +246,9 @@ img.large {
 	color: #203040;
 }
 /* Alert */
+.loading {
+	display: block !important;
+}
 .success {
 	color: #20a020;
 }
