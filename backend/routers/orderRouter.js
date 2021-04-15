@@ -6,7 +6,7 @@ import { isAuth } from '../utils.js';
 const orderRouter = express.Router();
 
 orderRouter.post(
-	'/products',
+	'/',
 	isAuth,
 	expressAsyncHandler(async (req, res) => {
 		if (req.body.orderItems.lenght === 0) {
