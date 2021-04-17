@@ -1,9 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import path from 'path';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
 import orderRouter from './routers/orderRouter.js';
+import uploadRouter from './routers/uploadRouter.js';
 
 dotenv.config();
 
@@ -19,30 +21,21 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/frocery_db', {
 	useCreateIndex: true,
 });
 
-// app.get('/api/products/:id', (req, res) => {
-// 	const product = data.products.find((x) => x._id === req.params.id);
-// 	if (product) {
-// 		res.send(product);
-// 	} else {
-// 		res.status(404).send({ message: 'Product Not Found' });
-// 	}
-// });
-// app.get('/api/products', (req, res) => {
-// 	res.send(data.products);
-// });
 app.get('/', (req, res) => {
 	res.send('Server is ready');
 });
 app.get('/api/config/paypal', (req, res) => {
 	res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
+app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
 app.use((err, req, res, next) => {
 	res.status(500).send({ message: err.message });
 });
-
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.listen(port, () => {
 	console.log(`Server at http://localhost:${port}`);
 });
