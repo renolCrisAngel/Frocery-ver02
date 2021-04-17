@@ -10,6 +10,7 @@ import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import OrderScreen from './screens/OrderScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductScreen from './screens/ProductScreen';
 import ProductsScreen from './screens/ProductsScreen';
@@ -89,6 +90,11 @@ function App() {
 					</div>
 				</header>
 				<main>
+					<Route
+						path="/product/:id/edit"
+						component={ProductEditScreen}
+						exact
+					></Route>
 					<AdminRoute
 						path="/productlist"
 						component={ProductListScreen}
