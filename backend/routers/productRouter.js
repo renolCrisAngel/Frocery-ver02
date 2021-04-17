@@ -78,7 +78,7 @@ productRouter.put(
 		}
 	})
 );
-//to delete product in product list
+//to delete product in product
 productRouter.delete(
 	'/:id',
 	isAuth,
