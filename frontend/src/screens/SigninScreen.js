@@ -32,8 +32,8 @@ export default function SigninScreen(props) {
 			<div className="form-container">
 				<div className="wrapper">
 					<form className="form" onSubmit={submitHandler}>
+						<h1 className="text">Sign In</h1>
 						<div>
-							<h1 className="text">Sign In</h1>
 							{loading && <LoadingBox></LoadingBox>}
 							{error && <MessageBox variant="danger">{error}</MessageBox>}
 						</div>
