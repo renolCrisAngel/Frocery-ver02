@@ -18,6 +18,7 @@ import ProductScreen from './screens/ProductScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import SellerScreen from './screens/SellerScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SigninScreen from './screens/SigninScreen';
 import UserEditScreen from './screens/UserEditScreen';
@@ -142,6 +143,7 @@ function App() {
 						path="/orderlist/seller"
 						component={OrderListScreen}
 					></SellerRoute>
+					<Route path="/seller/:id" component={SellerScreen}></Route>
 					<Route path="/orderhistory" component={OrderHistoryScreen}></Route>
 					<Route path="/order/:id" component={OrderScreen}></Route>
 					<Route path="/placeorder" component={PlaceOrderScreen}></Route>
