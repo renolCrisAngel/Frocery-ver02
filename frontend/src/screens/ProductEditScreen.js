@@ -4,7 +4,10 @@ import Axios from 'axios';
 import { detailsProduct, updateProduct } from '../actions/productsActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import { PRODUCT_UPDATE_RESET } from '../constants/productsConstants';
+import {
+	PRODUCT_UPDATE_RESET,
+	PRODUCT_UPDATE_SUCCESS,
+} from '../constants/productsConstants';
 
 export default function ProductEditScreen(props) {
 	const productId = props.match.params.id;
@@ -28,9 +31,6 @@ export default function ProductEditScreen(props) {
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		if (successUpdate) {
-			props.history.push('/productlist');
-		}
 		if (!product || product._id !== productId) {
 			dispatch({ type: PRODUCT_UPDATE_RESET });
 			dispatch(detailsProduct(productId));
@@ -97,6 +97,11 @@ export default function ProductEditScreen(props) {
 							{loadingUpdate && <LoadingBox></LoadingBox>}
 							{errorUpdate && (
 								<MessageBox variant="danger">{errorUpdate}</MessageBox>
+							)}
+							{successUpdate && (
+								<MessageBox variant="success">
+									Product Updated Successfully
+								</MessageBox>
 							)}
 						</div>
 						{loading ? (
