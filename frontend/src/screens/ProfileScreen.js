@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Axios from '../../node_modules/axios/index';
 import { detailsUser, updateUserProfile } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -14,6 +15,29 @@ export default function ProfileScreen() {
 	const [sellerName, setSellerName] = useState('');
 	const [sellerLogo, setSellerLogo] = useState('');
 	const [sellerDescription, setSellerDescription] = useState('');
+
+	const [loadingUpload, setLoadingUpload] = useState(false);
+	const [errorUpload, setErrorUpload] = useState('');
+
+	const uploadFileHandler = async (e) => {
+		const file = e.target.files[0];
+		const bodyFormData = new FormData();
+		bodyFormData.append('image', file);
+		setLoadingUpload(true);
+		try {
+			const { data } = await Axios.post('/api/uploads', bodyFormData, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+					Authorization: `Bearer ${userInfo.token}`,
+				},
+			});
+			setSellerLogo(data);
+			setLoadingUpload(false);
+		} catch (error) {
+			setErrorUpload(error.message);
+			setLoadingUpload(false);
+		}
+	};
 
 	const userSignin = useSelector((state) => state.userSignin);
 	const { userInfo } = userSignin;
@@ -141,6 +165,19 @@ export default function ProfileScreen() {
 												value={sellerLogo}
 												onChange={(e) => setSellerLogo(e.target.value)}
 											></input>
+										</div>
+										<div>
+											<label htmlFor="imageFile">Seller Logo File</label>
+											<input
+												type="file"
+												id="sellerLogo"
+												label="Choose Seller Logo"
+												onChange={uploadFileHandler}
+											></input>
+											{loadingUpload && <LoadingBox></LoadingBox>}
+											{errorUpload && (
+												<MessageBox variant="danger">{errorUpload}</MessageBox>
+											)}
 										</div>
 										<div>
 											<label htmlFor="sellerDescription">

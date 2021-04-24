@@ -36,16 +36,18 @@ export default function HomeScreen() {
 						))}
 					</Carousel>
 					{sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
-					{sellers.map((seller) => (
-						<div key={seller._id} className="row center">
-							<div className="card">
-								<Link to={`/seller/${seller._id}`}>
-									<img src={seller.seller.logo} alt={seller.seller.name} />
-									<h2>{seller.seller.name}</h2>
-								</Link>
+					<div className="row center">
+						{sellers.map((seller) => (
+							<div key={seller._id}>
+								<div className="card">
+									<Link to={`/seller/${seller._id}`}>
+										<img src={seller.seller.logo} alt={seller.seller.name} />
+										<h2>{seller.seller.name}</h2>
+									</Link>
+								</div>
 							</div>
-						</div>
-					))}
+						))}
+					</div>
 				</>
 			)}
 		</div>

@@ -4,10 +4,7 @@ import Axios from 'axios';
 import { detailsProduct, updateProduct } from '../actions/productsActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import {
-	PRODUCT_UPDATE_RESET,
-	PRODUCT_UPDATE_SUCCESS,
-} from '../constants/productsConstants';
+import { PRODUCT_UPDATE_RESET } from '../constants/productsConstants';
 
 export default function ProductEditScreen(props) {
 	const productId = props.match.params.id;
