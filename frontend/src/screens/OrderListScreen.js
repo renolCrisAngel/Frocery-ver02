@@ -24,7 +24,6 @@ export default function OrderListScreen(props) {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch({ type: ORDER_DELETE_RESET });
-		dispatch(listOrders());
 		dispatch(listOrders({ seller: sellerMode ? userInfo._id : '' }));
 	}, [dispatch, sellerMode, successDelete, userInfo._id]);
 
