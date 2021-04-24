@@ -26,9 +26,6 @@ export default function UserEditScreen(props) {
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		if (successUpdate) {
-			props.history.push('/userlist');
-		}
 		if (!user) {
 			dispatch({ type: USER_UPDATE_RESET });
 			dispatch(detailsUser(userId));
@@ -55,6 +52,11 @@ export default function UserEditScreen(props) {
 							<div>{loadingUpdate && <LoadingBox></LoadingBox>}</div>
 							{errorUpdate && (
 								<MessageBox variant="danger">{errorUpdate}</MessageBox>
+							)}
+							{successUpdate && (
+								<MessageBox variant="success">
+									User Updated Successfully
+								</MessageBox>
 							)}
 						</div>
 						{loading ? (
