@@ -58,8 +58,12 @@ export default function ProductListScreen(props) {
 			dispatch(deleteProduct(product._id));
 		}
 	};
-	const createHandler = () => {
+	const createHandler = (e) => {
+		e.preventDefault();
 		dispatch(createProduct());
+	};
+	const editHandler = (product) => {
+		props.history.push(`/product/${product._id}/edit`);
 	};
 	return (
 		<div>
@@ -101,9 +105,7 @@ export default function ProductListScreen(props) {
 									<button
 										type="button"
 										className="small"
-										onClick={() =>
-											props.history.push(`/product/${product._id}/edit`)
-										}
+										onClick={() => editHandler(product)}
 									>
 										Edit
 									</button>

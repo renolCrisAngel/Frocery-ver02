@@ -6,20 +6,6 @@ import { isAdmin, isAuth, isSellerOrAdmin } from '../utils.js';
 
 const productRouter = express.Router();
 
-// sending products backend to frontend
-productRouter.get(
-	'/',
-	expressAsyncHandler(async (req, res) => {
-		const seller = req.query.seller || '';
-		const sellerFilter = seller ? { seller } : {};
-		const products = await Product.find({ ...sellerFilter }).populate(
-			'seller',
-			'seller.name seller.logo'
-		);
-		res.send(products);
-	})
-);
-
 // to display product list
 productRouter.post(
 	'/',
@@ -42,7 +28,19 @@ productRouter.post(
 		res.send({ message: 'Product Created', product: createdProduct });
 	})
 );
-
+// sending products backend to frontend
+productRouter.get(
+	'/',
+	expressAsyncHandler(async (req, res) => {
+		const seller = req.query.seller || '';
+		const sellerFilter = seller ? { seller } : {};
+		const products = await Product.find({ ...sellerFilter }).populate(
+			'seller',
+			'seller.name seller.logo'
+		);
+		res.send(products);
+	})
+);
 //creating products backend
 productRouter.get(
 	'/seed',
