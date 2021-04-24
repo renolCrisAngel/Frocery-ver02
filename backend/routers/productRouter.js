@@ -6,6 +6,20 @@ import { isAdmin, isAuth, isSellerOrAdmin } from '../utils.js';
 
 const productRouter = express.Router();
 
+// sending products backend to frontend
+productRouter.get(
+	'/',
+	expressAsyncHandler(async (req, res) => {
+		const seller = req.query.seller || '';
+		const sellerFilter = seller ? { seller } : {};
+		const products = await Product.find({ ...sellerFilter }).populate(
+			'seller',
+			'seller.name seller.logo'
+		);
+		res.send(products);
+	})
+);
+
 // to display product list
 productRouter.post(
 	'/',
@@ -28,19 +42,7 @@ productRouter.post(
 		res.send({ message: 'Product Created', product: createdProduct });
 	})
 );
-// sending products backend to frontend
-productRouter.get(
-	'/',
-	expressAsyncHandler(async (req, res) => {
-		const seller = req.query.seller || '';
-		const sellerFilter = seller ? { seller } : {};
-		const products = await Product.find({ ...sellerFilter }).populate(
-			'seller',
-			'seller.name seller.logo'
-		);
-		res.send(products);
-	})
-);
+
 //creating products backend
 productRouter.get(
 	'/seed',
@@ -91,9 +93,10 @@ productRouter.put(
 productRouter.delete(
 	'/:id',
 	isAuth,
-	isAdmin,
+	isSellerOrAdmin,
 	expressAsyncHandler(async (req, res) => {
-		const product = await Product.findById(req.params.id);
+		const productId = req.params.id;
+		const product = await Product.findById(productId);
 		if (product) {
 			const deleteProduct = await product.remove();
 			res.send({ message: 'Product Deleted', product: deleteProduct });
