@@ -5,9 +5,10 @@ import Rating from './Rating';
 export default function Product(props) {
 	const { product } = props;
 	return (
-		<div key={product._id} className="card">
+		<div class ='img-view'>
+		<div key={product._id} className="col-1">
 			<Link to={`/product/${product._id}`}>
-				<img className="medium" src={product.image} alt={product.name} />
+				<img src={product.image} alt={product.name} />
 			</Link>
 			<div className="card-body">
 				<Link to={`/product/${product._id}`}>
@@ -25,6 +26,7 @@ export default function Product(props) {
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 	);
 }

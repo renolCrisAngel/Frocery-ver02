@@ -154,7 +154,7 @@ function App() {
 					<Route path="/products" component={ProductsScreen}></Route>
 					<Route path="/" component={HomeScreen} exact></Route>
 				</main>
-				<footer className="row center">All right reserved</footer>
+				{/* <footer className="row center">All right reserved</footer> */}
 			</div>
 		</BrowserRouter>
 	);

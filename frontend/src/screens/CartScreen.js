@@ -28,7 +28,7 @@ export default function CartScreen(props) {
 	return (
 		<div className="row top">
 			<div className="cart-col-2">
-				<h1>Shopping Cart</h1>
+				<h2 class="title">Shopping Cart</h2>
 
 				{cartItems.length === 0 ? (
 					<MessageBox>

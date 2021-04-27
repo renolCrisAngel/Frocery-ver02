@@ -13,7 +13,7 @@ export default function OrderHistoryScreen(props) {
 	}, [dispatch]);
 	return (
 		<div>
-			<h1>Order History</h1>
+			<h2 class="title">Order History</h2>
 			{loading ? (
 				<LoadingBox></LoadingBox>
 			) : error ? (
