@@ -43,6 +43,7 @@ function App() {
 						</Link>
 					</div>
 					<div>
+						<Link to="/products">Shop</Link>
 						<Link to="/cart">
 							Cart
 							{cartItems.length > 0 && (
@@ -56,9 +57,6 @@ function App() {
 									Admin <i className="fa fa-caret-down"></i>
 								</Link>
 								<ul className="dropdown-content">
-									<li>
-										<Link to="/dashboard">Dashboard</Link>
-									</li>
 									<li>
 										<Link to="/productlist">Products</Link>
 									</li>

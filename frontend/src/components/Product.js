@@ -20,7 +20,7 @@ export default function Product(props) {
 				<div className="row">
 					<div>
 						<Link to={`/seller/${product.seller._id}`}>
-							{product.seller.seller.name}
+							{product.seller.name}
 						</Link>
 					</div>
 				</div>

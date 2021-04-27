@@ -3,8 +3,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productsActions';
-import { Link } from 'react-router-dom';
-import Rating from '../components/Rating';
+import Product from '../components/Product.js';
 
 export default function ProductsScreen() {
 	const dispatch = useDispatch();
@@ -13,6 +12,7 @@ export default function ProductsScreen() {
 
 	useEffect(() => {
 		dispatch(listProducts({}));
+		console.log(listProducts({}));
 	}, [dispatch]);
 	return (
 		<div>
@@ -23,25 +23,7 @@ export default function ProductsScreen() {
 			) : (
 				<div className="row center">
 					{products.map((product) => (
-						<div key={product._id} className="card">
-							<Link to={`/product/${product._id}`}>
-								<img
-									className="medium"
-									src={product.image}
-									alt={product.name}
-								/>
-							</Link>
-							<div className="card-body">
-								<Link to={`/product/${product._id}`}>
-									<h2>{product.name}</h2>
-								</Link>
-								<Rating
-									rating={product.rating}
-									numReviews={product.numReviews}
-								></Rating>
-								<div className="price">&#8369; {product.price}</div>
-							</div>
-						</div>
+						<Product key={product._id} product={product}></Product>
 					))}
 				</div>
 			)}
