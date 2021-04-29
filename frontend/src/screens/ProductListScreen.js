@@ -82,15 +82,15 @@ export default function ProductListScreen(props) {
 			) : error ? (
 				<MessageBox variant="danger">{error}</MessageBox>
 			) : (
-				<table className="table">
+				<table className="styled-table-wide">
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>NAME</th>
-							<th>PRICE</th>
-							<th>CATEGORY</th>
-							<th>BRAND</th>
-							<th>ACTIONS</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Category</th>
+							<th>Brand</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>

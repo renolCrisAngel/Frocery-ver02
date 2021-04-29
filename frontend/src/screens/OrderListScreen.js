@@ -48,16 +48,16 @@ export default function OrderListScreen(props) {
 					<MessageBox variant="danger">{error}</MessageBox>
 				</div>
 			) : (
-				<table className="table">
+				<table className="styled-table-wide">
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>USER</th>
-							<th>DATE</th>
-							<th>TOTAL</th>
-							<th>PAID</th>
-							<th>DELIVERED</th>
-							<th>ACTIONS</th>
+							<th>User</th>
+							<th>Date</th>
+							<th>Total</th>
+							<th>Paid</th>
+							<th>Delivered</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>

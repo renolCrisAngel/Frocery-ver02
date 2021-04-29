@@ -766,7 +766,7 @@ input[type=checkbox]
 }
 
 .styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: #e0eaf5;
 }
 
 .styled-table tbody tr:last-of-type {
@@ -777,34 +777,34 @@ input[type=checkbox]
     color: #3169a8;
 }
 
-/* styled-table-orderhistory */
-.styled-table-orderhistory {
+/* styled-table-wide */
+.styled-table-wide {
     border-collapse: collapse;
     margin: 50px;
     width: 1230px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 	border-radius: 40px;
 }
-.styled-table-orderhistory thead tr {
+.styled-table-wide thead tr {
     text-align: left;
 	border-collapse: collapse;
 }
-.styled-table-orderhistory th,
-.styled-table-orderhistory td {
+.styled-table-wide th,
+.styled-table-wide td {
     padding: 12px 15px;
 }
-.styled-table-orderhistory tbody tr {
-    border-bottom: thin #dddddd;
+.styled-table-wide tbody tr {
+    border-bottom: 1px solid #dddddd;
 }
 
-.styled-table-orderhistory tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+.styled-table-wide tbody tr:nth-of-type(even) {
+    background-color: #e0eaf5;
 }
 
-.styled-table-orderhistory tbody tr:last-of-type {
+.styled-table-wide tbody tr:last-of-type {
     border-bottom: 2px solid #3169a8;
 }
-.styled-tabl-orderhistory tbody tr.active-row {
+.styled-tabl-wide tbody tr.active-row {
     font-weight: bold;
     color: #3169a8;
 }
