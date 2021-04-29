@@ -19,15 +19,15 @@ export default function OrderHistoryScreen(props) {
 			) : error ? (
 				<MessageBox variant="danger">{error}</MessageBox>
 			) : (
-				<table className="table">
+				<table className="styled-table-orderhistory">
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>DATE</th>
-							<th>TOTAL</th>
-							<th>PAID</th>
-							<th>DELIVERED</th>
-							<th>ACTIONS</th>
+							<th>Date</th>
+							<th>Total</th>
+							<th>Paid</th>
+							<th>Delivered</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>

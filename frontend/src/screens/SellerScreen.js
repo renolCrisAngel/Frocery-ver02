@@ -25,7 +25,6 @@ export default function SellerScreen(props) {
 		dispatch(listProducts({ seller: sellerId }));
 	}, [dispatch, sellerId]);
 	return (
-		<div className="row top">
 			<div className="col-1">
 				{loading ? (
 					<LoadingBox></LoadingBox>
@@ -59,7 +58,7 @@ export default function SellerScreen(props) {
 						<li>{user.seller.description}</li>
 					</ul>
 				)}
-			</div>
+			{/* </div> */}
 			<div className="col-3">
 				{loadingProducts ? (
 					<LoadingBox></LoadingBox>

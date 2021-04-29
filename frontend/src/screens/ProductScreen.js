@@ -25,98 +25,83 @@ export default function ProductScreen(props) {
 			) : error ? (
 				<MessageBox variant="danger">{error}</MessageBox>
 			) : (
-				<div>
-					<Link to="/products">Back to Shop</Link>
-					<div className="container">
-						<div className="col-1">
-							<img view src={product.image} alt={product.name} />
-						</div>
-						<div className="col-2">
-							<ul>
-								<li>
-									<h1>{product.name}</h1>
-								</li>
-								<li>
-									<Rating
-										rating={product.rating}
-										numReviews={product.numReviews}
-									></Rating>
-								</li>
-								<li>Price: &#8369; {product.price}</li>
-								<li>
-									Description:
-									<p>{product.description}</p>
-								</li>
-							</ul>
-						</div>
-						<div className="col-3">
-							<div className="card card-body">
-								<ul>
-									<li>
-										Seller{' '}
-										<h2>
-											<Link to={`/seller/${product.seller._id}`}>
-												{product.seller.seller.name}
-											</Link>
-										</h2>
-										<Rating
-											rating={product.seller.seller.rating}
-											numReviews={product.seller.seller.numReviews}
-										></Rating>
-									</li>
-									<li>
-										<div className="row">
-											<div>Price</div>
-											<div className="price">&#8369; {product.price}</div>
-										</div>
-									</li>
-									<li>
-										<div className="row">
-											<div>Status</div>
-											<div>
-												{product.countInStock > 0 ? (
-													<span className="success">In Stock</span>
-												) : (
-													<span className="danger">Unavailable</span>
-												)}
-											</div>
-										</div>
-									</li>
-									{product.countInStock > 0 && (
-										<>
-											<li>
-												<div className="row">
-													<div>Qty</div>
-													<div>
-														<select
-															value={qty}
-															onChange={(e) => setQty(e.target.value)}
-														>
-															{[...Array(product.countInStock).keys()].map(
-																(x) => (
-																	<option key={x + 1} value={x + 1}>
-																		{x + 1}
-																	</option>
-																)
-															)}
-														</select>
-													</div>
-												</div>
-												<button
-													onClick={addToCartHandler}
-													className="primary block"
-												>
-													Add to Cart
-												</button>
-											</li>
-										</>
-									)}
-								</ul>
+				<div class = "card-wrapper">
+					<div class = "card">
+						<div class = "images-display">
+            				<div class = "images-showcase">
+								<img view src={product.image} alt={product.name} />
 							</div>
-						</div>
+          				</div>
+						<div class = "product-content">
+							<h2 class = "product-title">{product.name}</h2>
+								{/* <Rating
+									rating={product.seller.seller.rating}
+									numReviews={product.seller.seller.numReviews}
+								></Rating> */}
+          					<h2>
+								<Link to={`/seller/${product.seller._id}`}>
+									{product.seller.seller.name}
+								</Link>
+							</h2>
+		  				</div>
+					    <div class = "product-price">
+            				<p class = "row">Price <span> &#8369;{product.price}</span></p>
+								<div class="row">
+									<div>Status</div>
+										<div>
+											{product.countInStock > 0 ? (
+												<span class="success">In Stock</span>
+											) : (
+												<span class="danger">Unavailable</span>
+											)}
+										</div>
+									</div>
+          						</div>
+		  				<div class = "product-detail">
+            				Description {product.description}
+		  				</div>
+		  				{product.countInStock > 0 && (
+							<>
+								<div className="row">
+									<div>Qty</div>
+										<div>
+											<select
+												value={qty}
+												onChange={(e) => setQty(e.target.value)}
+											>
+											{[...Array(product.countInStock).keys()].map(
+												(x) => (
+													<option key={x + 1} value={x + 1}>
+														{x + 1}
+													</option>
+												)
+											)}
+												</select>
+										</div>
+								</div>
+								<button
+									onClick={addToCartHandler}
+									className="primary block"
+								>
+									Add to Cart
+								</button>
+							</>
+						)}
 					</div>
 				</div>
 			)}
-		</div>
+			<div class="related">
+							<h2>Related Items</h2>
+							<div class="rows">
+								<div class="columns">
+									<div class="items">
+									{/* {products.map((product) => (
+										<Product key={product._id} product={product}></Product>
+									))} */}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 	);
 }
