@@ -94,7 +94,7 @@ export default function RegisterScreen(props) {
 			<div class="panels-container">
     			<div class="panel left-panel">
      				<div class="content">
-     					<img src="ui_img/shop.svg" class="image" alt="" />
+     					<img src="ui_img/shop.svg" class="cart-image" alt="" />
     				</div>
   				</div>
 			</div>

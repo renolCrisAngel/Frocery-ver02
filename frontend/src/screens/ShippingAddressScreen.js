@@ -30,62 +30,62 @@ export default function ShippingAddressScreen(props) {
 	return (
 		<div>
 			<CheckoutSteps step1 step2></CheckoutSteps>
-			<div className="form-container">
-				<div className="wrapper">
-					<form className="form" onSubmit={submitHandler}>
+			<div class="form-container">
+			  <div class="ship-screen">
+				<form action="#" class="sign-in-form" onSubmit={submitHandler}>
 						<div>
-							<h1>Shipping Address</h1>
+							<h2 class="title">Shipping Address</h2>
 						</div>
-						<div>
-							<label htmlFor="fullName">Full Name</label>
+						<div class="input-field">
+       						<i class="fas fa-user"></i>
 							<input
 								type="text"
 								id="fullName"
-								placeholder="Enter Full Name"
+								placeholder="Full Name"
 								value={fullName}
 								onChange={(e) => setFullName(e.target.value)}
 								required
 							/>
 						</div>
-						<div>
-							<label htmlFor="address">Address</label>
+						<div class="input-field">
+       						<i class="fas fa-address-card"></i>
 							<input
 								type="text"
 								id="address"
-								placeholder="Enter address"
+								placeholder="Address"
 								value={address}
 								onChange={(e) => setAddress(e.target.value)}
 								required
 							></input>
 						</div>
-						<div>
-							<label htmlFor="city">City</label>
+						<div class="input-field">
+       						<i class="fas fa-city"></i>
 							<input
 								type="text"
 								id="city"
-								placeholder="Enter city"
+								placeholder="City"
 								value={city}
 								onChange={(e) => setCity(e.target.value)}
 								required
 							></input>
 						</div>
-						<div>
-							<label htmlFor="postalCode">Postal Code</label>
+						<div class="input-field">
+       						<i class="fas fa-map-pin"></i>
 							<input
 								type="text"
 								id="postalCode"
-								placeholder="Enter postal code"
+								placeholder="Postal Code"
 								value={postalCode}
 								onChange={(e) => setPostalCode(e.target.value)}
 								required
 							></input>
 						</div>
-						<div>
-							<label htmlFor="country">Country</label>
+						<div class="input-field">
+       						<i class="fas fa-flag"></i>
 							<input
 								type="text"
 								id="country"
-								placeholder="Enter country"
+								placeholder="Country"
 								value={country}
 								onChange={(e) => setCountry(e.target.value)}
 								required

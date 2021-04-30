@@ -35,7 +35,7 @@ export default function CartScreen(props) {
 					</MessageBox>
 				) : (
 					<table class="styled-table">
-					<thead>
+						<thead>
 						<tr>
 							<th></th>
 							<th>Order Price</th>
@@ -44,40 +44,43 @@ export default function CartScreen(props) {
 						</tr>
 					</thead>
 					<tbody>
-					{/* <ul> */}
 						{cartItems.map((item) => (
 							<tr key={item.product} className="border">
-								<td><img
+								<td>
+									<img
 											src={item.image}
 											alt={item.name}
 											className="cart-img"
-										></img></td>
-			<td><Link to={`/product/${item.product}`}>{item.name}</Link>
-									<div>&#8369; {item.price}</div></td>
-			<td><select
-											value={item.qty}
-											onChange={(e) =>
-												dispatch(
-													addToCart(item.product, Number(e.target.value))
-												)
-											}
-										>
-											{[...Array(item.countInStock).keys()].map((x) => (
-												<option key={x + 1} value={x + 1}>
-													{x + 1}
-												</option>
-											))}
-										</select></td>
-			<td><button
+									></img></td>
+								<td>
+									<Link to={`/product/${item.product}`}>{item.name}</Link>
+										<div>&#8369; {item.price}</div></td>
+								<td>
+									<select
+										value={item.qty}
+										onChange={(e) =>
+											dispatch(
+												addToCart(item.product, Number(e.target.value))
+											)
+										}
+									>
+										{[...Array(item.countInStock).keys()].map((x) => (
+											<option key={x + 1} value={x + 1}>
+												{x + 1}
+											</option>
+										))}
+									</select></td>
+								<td>
+									<button
 											type="button"
 											onClick={() => removeFromCartHandler(item.product)}
 										>
 											Delete
 										</button></td>
-			</tr>
+							</tr>
 						))}
-						</tbody>
-</table>
+					</tbody>
+					</table>
 					
 				)}
 				
@@ -90,7 +93,6 @@ export default function CartScreen(props) {
 								<h2>Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items): </h2>
 									&#8369;
 									{cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
-							
 							</li>
 							<li>
 								<button
@@ -100,14 +102,12 @@ export default function CartScreen(props) {
 								disabled={cartItems.length === 0}
 							>
 								Proceed to Checkout
-							</button>
-						</li>
-					</ul>
+								</button>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
-			</div>
-
-			
 		</div>
 	);
 }

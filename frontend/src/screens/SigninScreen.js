@@ -70,7 +70,7 @@ export default function SigninScreen(props) {
 			<div class="panels-container">
     			<div class="panel left-panel">
      				<div class="content">
-     					<img src="ui_img/shop.svg" class="image" alt="" />
+     					<img class="cart-image" src="ui_img/shop.svg" alt="" />
     				</div>
   				</div>
 			</div>

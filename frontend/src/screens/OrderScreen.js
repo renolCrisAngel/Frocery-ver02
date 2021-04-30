@@ -82,20 +82,20 @@ export default function OrderScreen(props) {
 		<MessageBox variant="danger">{error}</MessageBox>
 	) : (
 		<div>
-			<h1>Order {order._id}</h1>
+			<h1>Order ID: {order._id}</h1>
 			<div className="row top">
 				<div className="cart-col-2">
 					<ul>
 						<li>
 							<div className="card card-body">
-								<h2>Shipping</h2>
+								<span class="fas fa-shipping-fast"></span> <b>Delivery Details</b>
 								<p>
-									<strong>Name:</strong> {order.shippingAddress.fullName} <br />
+									<strong>Name:</strong> {order.shippingAddress.fullName} <br/>
 									<strong>Address: </strong> {order.shippingAddress.address},
 									{order.shippingAddress.city},{' '}
-									{order.shippingAddress.postalCode},
+									{order.shippingAddress.postalCode}, {' '}
 									{order.shippingAddress.country}
-								</p>
+
 								{order.isDelivered ? (
 									<MessageBox variant="success">
 										Delivered at {order.deliveredAt}
@@ -103,14 +103,7 @@ export default function OrderScreen(props) {
 								) : (
 									<MessageBox variant="danger">Not Delivered</MessageBox>
 								)}
-							</div>
-						</li>
-						<li>
-							<div className="card card-body">
-								<h2>Payment</h2>
-								<p>
-									<strong>Method:</strong> {order.paymentMethod}
-								</p>
+									<strong>Payment Method:</strong> {order.paymentMethod}
 								{order.isPaid ? (
 									<MessageBox variant="success">
 										Paid at {order.paidAt}
@@ -118,38 +111,44 @@ export default function OrderScreen(props) {
 								) : (
 									<MessageBox variant="danger">Not Paid</MessageBox>
 								)}
+								</p>
 							</div>
 						</li>
-						<li>
-							<div className="card card-body">
-								<h2>Order Items</h2>
-								<ul>
-									{order.orderItems.map((item) => (
-										<li key={item.product}>
-											<div className="row">
-												<div>
-													<img
-														src={item.image}
-														alt={item.name}
-														className="small"
-													></img>
-												</div>
-												<div className="product-item">
-													<Link to={`/product/${item.product}`}>
-														{item.name}
-													</Link>
-												</div>
+								
+						<table class="styled-table">
+						<thead>
+							<tr>
+								<th><span class="fas fa-shopping-cart"></span> <b>Order Details</b></th>
+							</tr>
+						</thead>
+						<tbody>
+							{order.orderItems.map((item) => (
+								<tr key={item.product} className="border">
+									<td>
+										<img
+											src={item.image}
+											alt={item.name}
+											className="cart-img"
+										></img>
+									</td>
+									<td>
+										<Link to={`/product/${item.product}`}>{item.name}</Link>
+											<div>&#8369;{item.price}</div>
+												<div>x{item.qty}</div>
+									</td>
 
-												<div>
-													{item.qty} x ${item.price} = ${item.qty * item.price}
-												</div>
-											</div>
-										</li>
-									))}
-								</ul>
-							</div>
-						</li>
-					</ul>
+									<td>		
+										<div>
+											<h1>
+												&#8369;{item.qty * item.price}
+											</h1>
+										</div>
+									</td>
+								</tr>
+						    ))}
+						</tbody>
+						</table>
+						</ul>
 				</div>
 				<div className="cart-col-1">
 					<div className="card card-body">
