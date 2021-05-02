@@ -832,7 +832,22 @@ input[type=checkbox]
     color: #3169a8;
 }
 
-/* Product View */
+/* seller view/sellerscreen */
+.logo__holder {
+	width: 50%;
+	text-align: center;
+	
+  }
+  
+  .logo__holder img {
+	width: 30rem;
+	height: 23rem;
+	padding: 2rem 12rem;
+	margin-top: 4.5rem;
+	margin-left: 10rem;
+	position: absolute;
+  }
+/* Product View/productscreen */
   
   .cart__like {
 	display: grid;

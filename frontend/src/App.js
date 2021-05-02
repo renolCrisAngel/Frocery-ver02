@@ -69,6 +69,21 @@ function App() {
 								</ul>
 							</div>
 						)}
+						{userInfo && userInfo.isSeller && (
+							<div className="dropdown">
+								<Link to="#admin">
+									Seller <i className="fa fa-caret-down"></i>
+								</Link>
+								<ul className="dropdown-content">
+									<li>
+										<Link to="/productlist/seller">Products</Link>
+									</li>
+									<li>
+										<Link to="/orderlist/seller">Orders</Link>
+									</li>
+								</ul>
+							</div>
+						)}
 						{userInfo ? (
 							<div className="dropdown">
 								<Link to="#">
@@ -90,21 +105,6 @@ function App() {
 							</div>
 						) : (
 							<Link to="/signin">Sign In</Link>
-						)}
-						{userInfo && userInfo.isSeller && (
-							<div className="dropdown">
-								<Link to="#admin">
-									Seller <i className="fa fa-caret-down"></i>
-								</Link>
-								<ul className="dropdown-content">
-									<li>
-										<Link to="/productlist/seller">Products</Link>
-									</li>
-									<li>
-										<Link to="/orderlist/seller">Orders</Link>
-									</li>
-								</ul>
-							</div>
 						)}
 					</div>
 				</header>

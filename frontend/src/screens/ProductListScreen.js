@@ -104,14 +104,14 @@ export default function ProductListScreen(props) {
 								<td>
 									<button
 										type="button"
-										className="small"
+										className="medium"
 										onClick={() => editHandler(product)}
 									>
 										Edit
 									</button>
 									<button
 										type="button"
-										className="small"
+										className="medium"
 										onClick={() => deleteHandler(product)}
 									>
 										Delete
