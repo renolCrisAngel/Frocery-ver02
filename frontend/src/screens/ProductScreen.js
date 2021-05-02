@@ -25,83 +25,74 @@ export default function ProductScreen(props) {
 			) : error ? (
 				<MessageBox variant="danger">{error}</MessageBox>
 			) : (
-				<div class = "card-wrapper">
-					<div class = "card">
-						<div class = "images-display">
-            				<div class = "images-showcase">
-								<img view src={product.image} alt={product.name} />
-							</div>
+				<div class="cart__like">
+                		<div class="image__holder">
+							<img view src={product.image} alt={product.name} />
           				</div>
-						<div class = "product-content">
-							<h2 class = "product-title">{product.name}</h2>
-								{/* <Rating
+							<div class="cart__details">
+								<h2 class = "product-title">{product.name}</h2> 
+								<Link to={`/seller/${product.seller._id}`}>
+									{product.seller.seller.name}</Link>
+								<Rating
 									rating={product.seller.seller.rating}
 									numReviews={product.seller.seller.numReviews}
-								></Rating> */}
-          					<h2>
-								<Link to={`/seller/${product.seller._id}`}>
-									{product.seller.seller.name}
-								</Link>
-							</h2>
-		  				</div>
-					    <div class = "product-price">
-            				<p class = "row">Price <span> &#8369;{product.price}</span></p>
-								<div class="row">
-									<div>Status</div>
+								></Rating>
+            					<h> &#8369;{product.price}</h>
+									<div>	
+									<b>Description:  </b>{product.description}
+								  	</div>
+								
 										<div>
+											<b>Status:  </b> 
 											{product.countInStock > 0 ? (
-												<span class="success">In Stock</span>
-											) : (
-												<span class="danger">Unavailable</span>
-											)}
-										</div>
-									</div>
-          						</div>
-		  				<div class = "product-detail">
-            				Description {product.description}
-		  				</div>
-		  				{product.countInStock > 0 && (
-							<>
-								<div className="row">
-									<div>Qty</div>
-										<div>
+											<span class="success">In Stock</span>
+										) : (
+										<span class="danger">Unavailable</span>
+									)}
+										</div>{product.countInStock > 0 && (
+									<>
+											<b>Quantity:  </b>  
 											<select
-												value={qty}
+													value={qty}
 												onChange={(e) => setQty(e.target.value)}
 											>
-											{[...Array(product.countInStock).keys()].map(
-												(x) => (
+												{[...Array(product.countInStock).keys()].map(
+													(x) => (
 													<option key={x + 1} value={x + 1}>
 														{x + 1}
 													</option>
 												)
-											)}
-												</select>
-										</div>
-								</div>
+										)}
+											</select>
 								<button
+									type="button"
 									onClick={addToCartHandler}
-									className="primary block"
-								>
-									Add to Cart
-								</button>
+									className="primary block small"
+								> Add to Cart </button>
+								
 							</>
 						)}
 					</div>
-				</div>
-			)}
-			<div class="related">
-							<h2>Related Items</h2>
-							<div class="rows">
-								<div class="columns">
-									<div class="items">
-									{/* {products.map((product) => (
-										<Product key={product._id} product={product}></Product>
-									))} */}
-									</div>
+
+					{/* <section class="section featured" id="featured">
+					<div class="featured__container container">
+        				<div class="title">
+							<h1 class="primary__title">Featured Products</h1>
+        				</div>
+						<div class="featured__center">
+          					<div class="product">
+            					<div class="img__container">
+              						<img src="./images/alaska.jpg" alt="" />
+            					</div>
+            					<div class="product__bottom">
 								</div>
 							</div>
+
+
 						</div>
-					</div>
-	);
+					</div> */}
+					</div>	
+			)}
+		</div>
+	);	
 }
