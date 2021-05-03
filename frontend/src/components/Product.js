@@ -15,10 +15,10 @@ export default function Product(props) {
 					<h2>{product.name}</h2>
 				</Link>
 					&#8369;{product.price}
-				{/* <Rating
+				<Rating
 					rating={product.rating}
 					numReviews={product.numReviews}
-				></Rating> */}
+				></Rating>
 				
 				<div className="row">
 					<div>

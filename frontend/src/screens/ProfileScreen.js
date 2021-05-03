@@ -86,9 +86,9 @@ export default function ProfileScreen() {
 		}
 	};
 	return (
-		<div class="container">
-			<div class="forms-container">
-				<div class="prof-screen">
+		<div>
+			{/* <div class="forms-container"> */}
+				{/* <div class="prof-screen"> */}
           			<form action="#" class="sign-in-form" onSubmit={submitHandler}>
        					<h2 class="title">User Profile</h2>
 							{loading ? (
@@ -206,7 +206,7 @@ export default function ProfileScreen() {
 						)}
 					</form>
 				</div>
-			</div>
-		</div>
+			// </div>
+		// </div>
 	);
 }

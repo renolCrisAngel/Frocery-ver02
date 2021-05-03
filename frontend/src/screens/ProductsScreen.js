@@ -18,11 +18,11 @@ export default function ProductsScreen() {
 		<div>
 			<div id="slider">
 				<figure>
-					<img src="ui_img/banner3.jpg"></img>
-					<img src="ui_img/banner1.jpg"></img>
-					<img src="ui_img/banner2.jpg"></img>
-					<img src="ui_img/banner3.jpg"></img>
-					<img src="ui_img/banner2.jpg"></img>
+					<img src="ui_img/banner3.jpg" alt="banner"></img>
+					<img src="ui_img/banner1.jpg" alt="banner"></img>
+					<img src="ui_img/banner2.jpg" alt="banner"></img>
+					<img src="ui_img/banner3.jpg" alt="banner"></img>
+					<img src="ui_img/banner2.jpg" alt="banner"></img>
 				</figure>
 			</div>
 				<h2 class="title">Featured Products</h2>

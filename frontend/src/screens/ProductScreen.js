@@ -31,13 +31,14 @@ export default function ProductScreen(props) {
           				</div>
 							<div class="cart__details">
 								<h2 class = "product-title">{product.name}</h2> 
-								<Link to={`/seller/${product.seller._id}`}>
-									{product.seller.seller.name}</Link>
+								
 								<Rating
 									rating={product.seller.seller.rating}
 									numReviews={product.seller.seller.numReviews}
 								></Rating>
             					<h> &#8369;{product.price}</h>
+									{/* <Link to={`/seller/${product.seller._id}`}>
+										{product.seller.seller.name}</Link> */}
 									<div>	
 									<b>Description:  </b>{product.description}
 								  	</div>

@@ -40,7 +40,7 @@ export default function PlaceOrderScreen(props) {
 				<div className="cart-col-2">
 					<ul>
 						<li>
-							<div className="card card-body">
+							<div className="cardorder">
 								<span class="fas fa-shipping-fast"></span> <b>Delivery Details</b>
 								<p>
 									<strong>Name:</strong> {cart.shippingAddress.fullName} <br/>

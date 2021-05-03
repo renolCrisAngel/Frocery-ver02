@@ -45,7 +45,7 @@ export default function UserEditScreen(props) {
 	return (
 		<div class="container">
 			<div class="forms-container">
-				<div class="prof-screen">
+				<div>
           			<form action="#" class="sign-in-form" onSubmit={submitHandler}>
 						<div>
 							<h2 class="title">Edit User {name}</h2>

@@ -154,7 +154,60 @@ function App() {
 					<Route path="/products" component={ProductsScreen}></Route>
 					<Route path="/" component={HomeScreen} exact></Route>
 				</main>
-				{/* <footer className="row center">All right reserved</footer> */}
+				<div class="footer">
+    				<div class="footer-content">
+						<div class="footer-section about">
+        					<h2>Frocery</h2>
+        					<p class="text-justify">As we staying at home, a lot of us prefer to or need to order groceries online. Maybe you’re immunocompromised and don’t want to risk leaving the house? beacuse of the pandemic
+							Whatever your reason, Frocery act as online service that can help you — yes, even during these trying times.
+       						</p>
+        					<div class="contact">
+          						<span><i class="fas fa-phone"></i> &nbsp; (02) 005 1221</span>
+          							<span><i class="fas fa-envelope"></i> &nbsp; frocery@gmail.com</span>
+       						 </div>
+        					<div class="socials">
+								<a href="/#"><i class="fab fa-facebook"></i></a>
+								<a href="/#"><i class="fab fa-instagram"></i></a>
+								<a href="/#"><i class="fab fa-twitter"></i></a>
+								<a href="/#"><i class="fab fa-youtube"></i></a>
+							</div>
+						</div>
+      					<div class="footer-section links"><div class="footerrun">
+							<h2>Help</h2>
+							<br />
+							<ul>
+								<a href="/#">
+									<li>Guide</li>
+								</a>
+								<a href="/#">
+									<li>Partnered Stores</li>
+								</a>
+								<a href="/#">
+									<li>Frequently Asked Questions</li>
+								</a>
+								<a href="/#">
+									<li>Privacy Policy</li>
+								</a>
+								<a href="/#">
+									<li>Terms and Conditions</li>
+								</a>
+								</ul>
+							</div>
+						</div>
+						<div class="footer-section contact-form">
+							<h2 class='contact-us'>Contact us</h2>
+							<br />
+							<form action="index.html" method="post">
+								<input type="email" name="email" class="text-input contact-input" placeholder="Your email address..."></input>
+								<textarea rows="4" name="message" class="text-input contact-input" placeholder="Your message..."></textarea>
+								<button type="submit" class="btn btn-big contact-btn">
+									<i class="fas fa-envelope"></i>
+										Send
+								</button>
+    						 </form>
+						</div>						
+					</div>
+   				 </div>
 			</div>
 		</BrowserRouter>
 	);

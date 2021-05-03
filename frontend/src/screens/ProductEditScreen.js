@@ -184,14 +184,13 @@ export default function ProductEditScreen(props) {
 								</div>
 								<div class="input-field" >
            								<i class="fas fa-sticky-note"></i>
-									<textarea
+									<input
 										id="description"
-										rows="3"
 										type="text"
 										placeholder="Description"
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
-									></textarea>
+									></input>
 								</div>
 								<div>
 									<input class="btn solid" type="submit" value="Confirm" />
