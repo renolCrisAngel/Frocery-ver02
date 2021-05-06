@@ -23,6 +23,9 @@ import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SigninScreen from './screens/SigninScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import UserListScreen from './screens/UserListScreen';
+import SearchBox from './components/SearchBox';
+import SearchScreen from './screens/SearchScreen';
+
 function App() {
 	const cart = useSelector((state) => state.cart);
 	const { cartItems } = cart;
@@ -42,6 +45,13 @@ function App() {
 							Frocery
 						</Link>
 					</div>
+					<div>
+						<Route
+              				render={({ history }) => (
+                				<SearchBox history={history}></SearchBox>
+              				)}
+           				 ></Route>
+          			</div>
 					<div>
 						<Link to="/products">Shop</Link>
 						<Link to="/cart">
@@ -114,6 +124,11 @@ function App() {
 						component={ProductEditScreen}
 						exact
 					></Route>
+					<Route
+            			path="/search/name/:name?"
+            			component={SearchScreen}
+            			exact
+         			 ></Route>
 					<AdminRoute
 						path="/productlist"
 						component={ProductListScreen}
