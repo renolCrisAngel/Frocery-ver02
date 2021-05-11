@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { listProducts } from '../actions/productsActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -12,12 +12,13 @@ export default function SearchScreen(props) {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
-  const productCategoryList = useSelector((state) => state.productCategoryList);
-  const {
-    loading: loadingCategories,
-    error: errorCategories,
-    categories,
-  } = productCategoryList;
+  // const productCategoryList = useSelector((state) => state.productCategoryList);
+  // const {
+    // loading: loadingCategories,
+    // error: errorCategories,
+    // categories,
+  // } = 
+  // productCategoryList;
   useEffect(() => {
     dispatch(
         listProducts({
@@ -27,39 +28,16 @@ export default function SearchScreen(props) {
       );
     }, [category, dispatch, name]);
   
-    const getFilterUrl = (filter) => {
-      const filterCategory = filter.category || category;
-      const filterName = filter.name || name;
-      return `/search/category/${filterCategory}/name/${filterName}`;
-};
+//     const getFilterUrl = (filter) => {
+//       const filterCategory = filter.category || category;
+//       const filterName = filter.name || name;
+//       return `/search/category/${filterCategory}/name/${filterName}`;
+// };
+
   return (
     <div className="row">
       <div className="row top">
-        {/* <div className="col-1">
-          <h3>Department</h3>
-          <ul>
-            <li>Category 1</li>
-          </ul>
-          {loadingCategories ? (
-            <LoadingBox></LoadingBox>
-          ) : errorCategories ? (
-            <MessageBox variant="danger">{errorCategories}</MessageBox>
-          ) : (
-            <ul>
-              {categories.map((c) => (
-                <li key={c}>
-                  <Link
-                    className={c === category ? 'active' : ''}
-                    to={getFilterUrl({ category: c })}
-                  >
-                    {c}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div> */}
-        <div className="col-3">
+        <div>
           {loading ? (
             <LoadingBox></LoadingBox>
           ) : error ? (
@@ -70,7 +48,7 @@ export default function SearchScreen(props) {
                 <MessageBox>No Product Found</MessageBox>
               )}</center>
               <div class="row center">
-					<div class="arrival__center">
+					            <div class="arrival__center">
                         {products.map((product) => (
                         <div class="product">
                             <div class="img__container">
