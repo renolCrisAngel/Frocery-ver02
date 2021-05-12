@@ -87,22 +87,20 @@ export default function ProfileScreen() {
 	};
 	return (
 		<div>
-			<div className="form-container">
-				<div className="wrapper">
-					<form className="form" onSubmit={submitHandler}>
-						<div>
-							<h1 className="text">User Profile</h1>
-						</div>
-						{loading ? (
-							<div>
-								<LoadingBox></LoadingBox>
-							</div>
-						) : error ? (
-							<div>
-								<MessageBox variant="danger">{error}</MessageBox>
-							</div>
-						) : (
-							<>
+			{/* <div class="forms-container"> */}
+				{/* <div class="prof-screen"> */}
+          			<form action="#" class="sign-in-form" onSubmit={submitHandler}>
+       					<h2 class="title">User Profile</h2>
+							{loading ? (
+								<div>
+									<LoadingBox></LoadingBox>
+								</div>
+							) : error ? (
+								<div>
+									<MessageBox variant="danger">{error}</MessageBox>
+								</div>
+								) : (
+								<>
 								<div>
 									{loadingUpdate && <LoadingBox></LoadingBox>}
 									{errorUpdate && (
@@ -114,64 +112,74 @@ export default function ProfileScreen() {
 										</MessageBox>
 									)}
 								</div>
-								<div>
-									<label htmlFor="name">Name</label>
+								<div class="input-field" >
+           							<i class="fas fa-user"></i>
 									<input
 										id="name"
 										type="text"
-										placeholder="Enter name"
+										placeholder="Name"
 										value={name}
 										onChange={(e) => setName(e.target.value)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="email">Email</label>
+								<div class="input-field">
+       								<i class="fas fa-envelope"></i>
 									<input
 										id="email"
 										type="email"
-										placeholder="Enter email"
+										placeholder="Email"
 										value={email}
 										onChange={(e) => setEmail(e.target.value)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="password">Password</label>
+								<div class="input-field">
+          							<i class="fas fa-lock"></i>
 									<input
 										id="password"
 										type="password"
-										placeholder="Enter password"
+										placeholder="Password"
 										onChange={(e) => setPassword(e.target.value)}
+									></input>
+								</div>
+								<div class="input-field">
+          							<i class="fas fa-lock"></i>
+									<input
+										id="confirmPassword"
+										type="password"
+										placeholder="Confirm Password"
+										onChange={(e) => setConfirmPassword(e.target.value)}
 									></input>
 								</div>
 								{user.isSeller && (
 									<>
-										<h2>Seller</h2>
-										<div>
-											<label htmlFor="sellerName">Seller Name</label>
+									<h2 class="title">Seller</h2>
+										<div class="input-field" >
+           									<i class="fas fa-user"></i>
 											<input
 												id="sellerName"
 												type="text"
-												placeholder="Enter Seller Name"
+												placeholder="Store Name"
 												value={sellerName}
 												onChange={(e) => setSellerName(e.target.value)}
 											></input>
 										</div>
-										<div>
-											<label htmlFor="sellerLogo">Seller Logo</label>
+										{/* <div class="input-field" >
+           									<i class="fas fa-box"></i>
 											<input
 												id="sellerLogo"
 												type="text"
-												placeholder="Enter Seller Logo"
+												placeholder="Insert Seller Logo"
 												value={sellerLogo}
 												onChange={(e) => setSellerLogo(e.target.value)}
 											></input>
-										</div>
-										<div>
-											<label htmlFor="imageFile">Seller Logo File</label>
+										</div> */}
+										
+										<div class="input-field" >
+           									<i class="fas fa-image"></i>
 											<input
 												type="file"
 												id="sellerLogo"
-												label="Choose Seller Logo"
+												label="Choose Logo"
 												onChange={uploadFileHandler}
 											></input>
 											{loadingUpload && <LoadingBox></LoadingBox>}
@@ -179,14 +187,12 @@ export default function ProfileScreen() {
 												<MessageBox variant="danger">{errorUpload}</MessageBox>
 											)}
 										</div>
-										<div>
-											<label htmlFor="sellerDescription">
-												Seller Description
-											</label>
+										<div class="input-field" >
+           									<i class="fas fa-sticky-note"></i>
 											<input
 												id="sellerDescription"
 												type="text"
-												placeholder="Enter Seller Description"
+												placeholder="Description"
 												value={sellerDescription}
 												onChange={(e) => setSellerDescription(e.target.value)}
 											></input>
@@ -194,25 +200,13 @@ export default function ProfileScreen() {
 									</>
 								)}
 								<div>
-									<label htmlFor="confirmPassword">confirm Password</label>
-									<input
-										id="confirmPassword"
-										type="password"
-										placeholder="Enter confirm password"
-										onChange={(e) => setConfirmPassword(e.target.value)}
-									></input>
-								</div>
-								<div>
-									<label />
-									<button className="primary" type="submit">
-										Update
-									</button>
+									<input class="btn solid" type="submit" value="Update" />	
 								</div>
 							</>
 						)}
 					</form>
 				</div>
-			</div>
-		</div>
+			// </div>
+		// </div>
 	);
 }

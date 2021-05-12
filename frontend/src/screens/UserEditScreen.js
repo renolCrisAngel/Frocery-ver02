@@ -43,12 +43,12 @@ export default function UserEditScreen(props) {
 		dispatch(updateUser({ _id: userId, name, email, isSeller, isAdmin }));
 	};
 	return (
-		<div>
-			<div className="form-container">
-				<div className="wrapper">
-					<form className="form" onSubmit={submitHandler}>
+		<div class="container">
+			<div class="forms-container">
+				<div>
+          			<form action="#" class="sign-in-form" onSubmit={submitHandler}>
 						<div>
-							<h1>Edit User {name}</h1>
+							<h2 class="title">Edit User {name}</h2>
 							<div>{loadingUpdate && <LoadingBox></LoadingBox>}</div>
 							{errorUpdate && (
 								<MessageBox variant="danger">{errorUpdate}</MessageBox>
@@ -67,8 +67,8 @@ export default function UserEditScreen(props) {
 							<MessageBox variant="danger">{error}</MessageBox>
 						) : (
 							<>
-								<div>
-									<label htmlFor="name">Name</label>
+								<div class="input-field">
+       								<i class="fas fa-user"></i>
 									<input
 										id="name"
 										type="text"
@@ -77,8 +77,8 @@ export default function UserEditScreen(props) {
 										onChange={(e) => setName(e.target.value)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="email">Email</label>
+								<div class="input-field">
+       								<i class="fas fa-envelope"></i>
 									<input
 										id="email"
 										type="email"
@@ -87,8 +87,8 @@ export default function UserEditScreen(props) {
 										onChange={(e) => setEmail(e.target.value)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="isSeller">Is Seller</label>
+								<div class='checkbox'>
+									<label htmlFor="isSeller">Seller</label>
 									<input
 										id="isSeller"
 										type="checkbox"
@@ -97,8 +97,8 @@ export default function UserEditScreen(props) {
 										onChange={(e) => setIsSeller(e.target.checked)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="isAdmin">Is Admin</label>
+								<div class='checkbox'>
+									<label htmlFor="isAdmin">Admin</label>
 									<input
 										id="isAdmin"
 										type="checkbox"
@@ -107,9 +107,7 @@ export default function UserEditScreen(props) {
 									></input>
 								</div>
 								<div>
-									<button type="submit" className="primary">
-										Update
-									</button>
+									<input class="btn solid" type="submit" value="Update" />	
 								</div>
 							</>
 						)}

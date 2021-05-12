@@ -25,57 +25,58 @@ export default function SellerScreen(props) {
 		dispatch(listProducts({ seller: sellerId }));
 	}, [dispatch, sellerId]);
 	return (
-		<div className="row top">
-			<div className="col-1">
-				{loading ? (
-					<LoadingBox></LoadingBox>
-				) : error ? (
-					<MessageBox variant="danger">{error}</MessageBox>
-				) : (
-					<ul className="card card-body">
-						<li>
-							<div className="row start">
-								<div className="p-1">
-									<img
-										className="small"
-										src={user.seller.logo}
-										alt={user.seller.name}
-									></img>
-								</div>
-								<div className="p-1">
-									<h1>{user.seller.name}</h1>
-								</div>
-							</div>
-						</li>
-						<li>
-							<Rating
-								rating={user.seller.rating}
-								numReviews={user.seller.numReviews}
-							></Rating>
-						</li>
-						<li>
-							<a href={`mail to:${user.email}`}>Contact Seller</a>
-						</li>
-						<li>{user.seller.description}</li>
-					</ul>
-				)}
+		<div>		
+		{loading ? (
+			<LoadingBox></LoadingBox>
+		) : error ? (	
+			<MessageBox variant="danger">{error}</MessageBox>
+		) : (
+			<div class="card card-body">
+				<div class="cart__like">
+					<div class="logo__holder">
+						<img view src={user.seller.logo} alt={user.seller.name} />
+			 		 </div>
+			  	<div class="cart__details">
+					<h2 class = "product-title">{user.seller.name}</h2> 	
+						<Rating
+						rating={user.seller.rating}
+						numReviews={user.seller.numReviews}
+					></Rating>
+						<a href={`mail to:${user.email}`}>Contact Seller</a>
+					<div>
+						<h2>About Shop</h2>
+							{user.seller.description}
+					</div> 
+				</div>
 			</div>
-			<div className="col-3">
+			<h2 class="title">All Products</h2>
+			<div class="row center">
 				{loadingProducts ? (
-					<LoadingBox></LoadingBox>
+				<LoadingBox></LoadingBox>
 				) : errorProducts ? (
 					<MessageBox variant="danger">{errorProducts}</MessageBox>
 				) : (
-					<>
-						{products.length === 0 && <MessageBox>No Product Found</MessageBox>}
-						<div className="row center">
-							{products.map((product) => (
-								<Product key={product._id} product={product}></Product>
-							))}
-						</div>
-					</>
-				)}
-			</div>
+						<>
+							{products.length === 0 && <MessageBox>No Product Found</MessageBox>}
+								<div class="row center">
+									<div class="arrival__center"></div>
+										<div className="row center">
+											{products.map((product) => (
+											<div class="product">
+												<div class="img__container">
+													<div class="card">
+													<Product key={product._id} product={product}></Product>
+												</div>
+											</div>
+										</div>
+										))}
+									</div>
+								</div>
+							</>
+						)}
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }

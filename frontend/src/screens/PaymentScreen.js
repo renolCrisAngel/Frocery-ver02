@@ -19,11 +19,11 @@ export default function PaymentScreen(props) {
 	return (
 		<div>
 			<CheckoutSteps step1 step2 step3></CheckoutSteps>
-			<div className="form-container">
-				<div className="wrapper">
-					<form className="form" onSubmit={submitHandler}>
+			<div class="form-container">
+			  <div class="ship-screen">
+				<form action="#" class="sign-in-form" onSubmit={submitHandler}>
 						<div>
-							<h1>Payment Method</h1>
+							<h2 class= "title">Payment Method</h2>
 						</div>
 						<div>
 							<div>

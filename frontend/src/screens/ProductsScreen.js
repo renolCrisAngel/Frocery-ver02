@@ -16,17 +16,37 @@ export default function ProductsScreen() {
 	}, [dispatch]);
 	return (
 		<div>
+			<div id="slider">
+				<figure>
+					<img src="ui_img/banner3.jpg" alt="banner"></img>
+					<img src="ui_img/banner1.jpg" alt="banner"></img>
+					<img src="ui_img/banner2.jpg" alt="banner"></img>
+					<img src="ui_img/banner3.jpg" alt="banner"></img>
+					<img src="ui_img/banner2.jpg" alt="banner"></img>
+				</figure>
+			</div>
+				<h2 class="title">Featured Products</h2>
 			{loading ? (
 				<LoadingBox></LoadingBox>
 			) : error ? (
 				<MessageBox variant="danger">{error}</MessageBox>
 			) : (
-				<div className="row center">
-					{products.map((product) => (
-						<Product key={product._id} product={product}></Product>
-					))}
+					<div class="row center">
+						<div class="arrival__center">
+							{products.map((product) => (
+							<div key={product._id}>
+								<div class="product">
+									<div class="img__container">
+										<div class="card">
+											<Product key={product._id} product={product}></Product>
+										</div>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			)}
 		</div>
 	);
-}
+} 

@@ -19,7 +19,7 @@ export default function HomeScreen() {
 	}, [dispatch]);
 	return (
 		<div>
-			<h2>Top Sellers</h2>
+			<h2 class="title">Top Sellers</h2>
 			{loadingSellers ? (
 				<LoadingBox></LoadingBox>
 			) : errorSellers ? (

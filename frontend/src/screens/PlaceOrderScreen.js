@@ -40,55 +40,52 @@ export default function PlaceOrderScreen(props) {
 				<div className="cart-col-2">
 					<ul>
 						<li>
-							<div className="card card-body">
-								<h2>Shipping</h2>
+							<div className="cardorder">
+								<span class="fas fa-shipping-fast"></span> <b>Delivery Details</b>
 								<p>
-									<strong>Name:</strong> {cart.shippingAddress.fullName} <br />
+									<strong>Name:</strong> {cart.shippingAddress.fullName} <br/>
 									<strong>Address: </strong> {cart.shippingAddress.address},
-									{cart.shippingAddress.city}, {cart.shippingAddress.postalCode}
-									,{cart.shippingAddress.country}
+									{cart.shippingAddress.city},{' '}
+									{cart.shippingAddress.postalCode}, {' '}
+									{cart.shippingAddress.country} <br/>
+									<strong>Payment Method: </strong> {cart.paymentMethod}
 								</p>
 							</div>
 						</li>
-						<li>
-							<div className="card card-body">
-								<h2>Payment</h2>
-								<p>
-									<strong>Method:</strong> {cart.paymentMethod}
-								</p>
-							</div>
-						</li>
-						<li>
-							<div className="card card-body">
-								<h2>Order Items</h2>
-								<ul>
-									{cart.cartItems.map((item) => (
-										<li key={item.product}>
-											<div className="row">
-												<div>
-													<img
-														src={item.image}
-														alt={item.name}
-														className="small"
-													></img>
-												</div>
-												<div className="min-30">
-													<Link to={`/product/${item.product}`}>
-														{item.name}
-													</Link>
-												</div>
+						</ul>
+						<table class="styled-table">
+						<thead>
+							<tr>
+								<th><span class="fas fa-shopping-cart"></span> <b>Order Details</b></th>
+							</tr>
+						</thead>
+						<tbody>
+							{cart.cartItems.map((item) => (
+								<tr key={item.product} className="border">
+									<td>
+										<img
+											src={item.image}
+											alt={item.name}
+											className="cart-img"
+										></img>
+									</td>
+									<td>
+										<Link to={`/product/${item.product}`}>{item.name}</Link>
+											<div>&#8369;{item.price}</div>
+												<div>x{item.qty}</div>
+									</td>
 
-												<div>
-													{item.qty} x &#8369;{item.price} = &#8369;
-													{item.qty * item.price}
-												</div>
-											</div>
-										</li>
-									))}
-								</ul>
-							</div>
-						</li>
-					</ul>
+									<td>		
+										<div>
+											<h1>
+												&#8369;{item.qty * item.price}
+											</h1>
+										</div>
+									</td>
+								</tr>
+						    ))}
+						</tbody>
+						</table>
 				</div>
 				<div className="cart-col-1">
 					<div className="card card-body">
@@ -99,28 +96,28 @@ export default function PlaceOrderScreen(props) {
 							<li>
 								<div className="row">
 									<div>Items</div>
-									<div>&#8369;{cart.itemsPrice.toFixed(2)}</div>
+										<div>&#8369;{cart.itemsPrice.toFixed(1)}</div>
 								</div>
 							</li>
 							<li>
 								<div className="row">
 									<div>Shipping</div>
-									<div>&#8369;{cart.shippingPrice.toFixed(2)}</div>
+										<div>&#8369;{cart.shippingPrice.toFixed(1)}</div>
 								</div>
 							</li>
 							<li>
 								<div className="row">
 									<div>Tax</div>
-									<div>&#8369;{cart.taxPrice.toFixed(2)}</div>
+										<div> &#8369;{cart.taxPrice.toFixed(1)}</div>
 								</div>
 							</li>
 							<li>
 								<div className="row">
 									<div>
-										<strong> Order Total</strong>
+										<strong>Order Total</strong>
 									</div>
 									<div>
-										<strong>&#8369;{cart.totalPrice.toFixed(2)}</strong>
+										<strong>&#8369;{cart.totalPrice.toFixed(1)}</strong>
 									</div>
 								</div>
 							</li>

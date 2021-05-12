@@ -83,13 +83,11 @@ export default function ProductEditScreen(props) {
 	};
 
 	return (
-		<div>
-			<div className="form-container">
-				<div className="wrapper">
-					<form className="form" onSubmit={submitHandler}>
-						<div>
-							<h1>Edit Product: {productId}</h1>
-						</div>
+		<div class="container">
+			<div class="forms-container">
+				<div class="product-screen">
+          			<form action="#" class="sign-in-form" onSubmit={submitHandler}>
+						<h1>Edit Product: {productId}</h1>
 						<div>
 							{loadingUpdate && <LoadingBox></LoadingBox>}
 							{errorUpdate && (
@@ -111,28 +109,28 @@ export default function ProductEditScreen(props) {
 							</div>
 						) : (
 							<>
-								<div>
-									<label htmlFor="name">Name</label>
+								<div class="input-field">
+          							<i class="fas fa-tags"></i>
 									<input
 										id="name"
 										type="text"
-										placeholder="Enter name"
+										placeholder="Name"
 										value={name}
 										onChange={(e) => setName(e.target.value)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="price">Price</label>
+								<div class="input-field">
+          							<i class="fas fa-money-bill"></i>
 									<input
 										id="price"
 										type="text"
-										placeholder="Enter price"
+										placeholder="Price"
 										value={price}
 										onChange={(e) => setPrice(e.target.value)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="image">Image</label>
+								{/* <div class="input-field" >
+           									<i class="fas fa-image"></i>
 									<input
 										id="image"
 										type="text"
@@ -140,9 +138,9 @@ export default function ProductEditScreen(props) {
 										value={image}
 										onChange={(e) => setImage(e.target.value)}
 									></input>
-								</div>
-								<div>
-									<label htmlFor="imageFile">Image File</label>
+								</div> */}
+								<div class="input-field" >
+           								<i class="fas fa-image"></i>
 									<input
 										type="file"
 										id="imageFile"
@@ -154,52 +152,48 @@ export default function ProductEditScreen(props) {
 										<MessageBox variant="danger">{errorUpload}</MessageBox>
 									)}
 								</div>
-								<div>
-									<label htmlFor="category">Category</label>
+								<div class="input-field" >
+           								<i class="fas fa-th-list"></i>
 									<input
 										id="category"
 										type="text"
-										placeholder="Enter category"
+										placeholder="Category"
 										value={category}
 										onChange={(e) => setCategory(e.target.value)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="brand">Brand</label>
+								<div class="input-field" >
+           								<i class="fas fa-th-list"></i>
 									<input
 										id="brand"
 										type="text"
-										placeholder="Enter brand"
+										placeholder="Brand"
 										value={brand}
 										onChange={(e) => setBrand(e.target.value)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="countInStock">Count In Stock</label>
+								<div class="input-field" >
+           								<i class="fas fa-boxes"></i>
 									<input
 										id="countInStock"
 										type="text"
-										placeholder="Enter countInStock"
+										placeholder="Count in Stock"
 										value={countInStock}
 										onChange={(e) => setCountInStock(e.target.value)}
 									></input>
 								</div>
-								<div>
-									<label htmlFor="description">Description</label>
-									<textarea
+								<div class="input-field" >
+           								<i class="fas fa-sticky-note"></i>
+									<input
 										id="description"
-										rows="3"
 										type="text"
-										placeholder="Enter description"
+										placeholder="Description"
 										value={description}
 										onChange={(e) => setDescription(e.target.value)}
-									></textarea>
+									></input>
 								</div>
 								<div>
-									<label></label>
-									<button className="primary" type="submit">
-										Update
-									</button>
+									<input class="btn solid" type="submit" value="Confirm" />
 								</div>
 							</>
 						)}

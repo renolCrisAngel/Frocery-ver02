@@ -28,90 +28,84 @@ export default function CartScreen(props) {
 	return (
 		<div className="row top">
 			<div className="cart-col-2">
-				<h1>Shopping Cart</h1>
-
-				{cartItems.length === 0 ? (
-					<MessageBox>
-						Cart is empty. <Link to="/products">Go Shopping</Link>
+				<h2 class="title">Shopping Cart</h2>
+					{cartItems.length === 0 ? (
+					<MessageBox><center>
+						Cart is empty. <Link to="/products">Go Shopping</Link></center>
 					</MessageBox>
 				) : (
-					<ul>
-						<div className="row border-top-bottom">
-							<div className="item-label">
-								<h2>Item</h2>
-							</div>
-							<div className="price-label">
-								<h2>Price</h2>
-							</div>
-							<div className="quantity-label">
-								<h2>Quantity</h2>
-							</div>
-						</div>
+					<table class="styled-table">
+						<thead>
+						<tr>
+							<th></th>
+							<th>Order Price</th>
+							<th>Quantity</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
 						{cartItems.map((item) => (
-							<li key={item.product} className="border">
-								<div className="row">
-									<div>
-										<img
+							<tr key={item.product} className="border">
+								<td>
+									<img
 											src={item.image}
 											alt={item.name}
-											className="small"
-										></img>
-									</div>
-									<div className="product-item ">
-										<Link to={`/product/${item.product}`}>{item.name}</Link>
-									</div>
-									<div>&#8369; {item.price}</div>
-									<div>
-										<select
-											value={item.qty}
-											onChange={(e) =>
-												dispatch(
-													addToCart(item.product, Number(e.target.value))
-												)
-											}
-										>
-											{[...Array(item.countInStock).keys()].map((x) => (
-												<option key={x + 1} value={x + 1}>
-													{x + 1}
-												</option>
-											))}
-										</select>
-									</div>
-									<div>
-										<button
+											className="cart-img"
+									></img></td>
+								<td>
+									<Link to={`/product/${item.product}`}>{item.name}</Link>
+										<div>&#8369; {item.price}</div></td>
+								<td>
+									<select
+										value={item.qty}
+										onChange={(e) =>
+											dispatch(
+												addToCart(item.product, Number(e.target.value))
+											)
+										}
+									>
+										{[...Array(item.countInStock).keys()].map((x) => (
+											<option key={x + 1} value={x + 1}>
+												{x + 1}
+											</option>
+										))}
+									</select></td>
+								<td>
+									<button
 											type="button"
 											onClick={() => removeFromCartHandler(item.product)}
 										>
 											Delete
-										</button>
-									</div>
-								</div>
-							</li>
+										</button></td>
+							</tr>
 						))}
-					</ul>
+					</tbody>
+					</table>
+					
 				)}
+				
 			</div>
 			<div className="cart-col-1">
 				<div className="card card-body">
-					<ul>
-						<li>
-							<h2>
-								Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) :
-								&#8369;
-								{cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
-							</h2>
-						</li>
-						<li>
-							<button
-								type="button"
-								onClick={checkoutHandler}
-								className="primary block"
+					<div className="subtotal">
+						<ul>
+							<li>
+								<h2>Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items): </h2>
+									&#8369;
+									{cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+							</li>
+							<li>
+								<button
+									type="button"
+									onClick={checkoutHandler}
+									className="primary block"
 								disabled={cartItems.length === 0}
 							>
 								Proceed to Checkout
-							</button>
-						</li>
-					</ul>
+								</button>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

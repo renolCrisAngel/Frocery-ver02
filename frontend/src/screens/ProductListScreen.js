@@ -68,7 +68,7 @@ export default function ProductListScreen(props) {
 	return (
 		<div>
 			<div className="row">
-				<h1>Products</h1>
+				<h2 class="title">Products</h2>
 				<button type="button" className="primary" onClick={createHandler}>
 					Create Product
 				</button>
@@ -82,15 +82,15 @@ export default function ProductListScreen(props) {
 			) : error ? (
 				<MessageBox variant="danger">{error}</MessageBox>
 			) : (
-				<table className="table">
+				<table className="styled-table-wide">
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>NAME</th>
-							<th>PRICE</th>
-							<th>CATEGORY</th>
-							<th>BRAND</th>
-							<th>ACTIONS</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Category</th>
+							<th>Brand</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -98,20 +98,20 @@ export default function ProductListScreen(props) {
 							<tr key={product._id}>
 								<td>{product._id}</td>
 								<td>{product.name}</td>
-								<td>{product.price}</td>
+								<td>&#8369;{product.price}</td>
 								<td>{product.category}</td>
 								<td>{product.brand}</td>
 								<td>
 									<button
 										type="button"
-										className="small"
+										className="medium"
 										onClick={() => editHandler(product)}
 									>
 										Edit
 									</button>
 									<button
 										type="button"
-										className="small"
+										className="medium"
 										onClick={() => deleteHandler(product)}
 									>
 										Delete

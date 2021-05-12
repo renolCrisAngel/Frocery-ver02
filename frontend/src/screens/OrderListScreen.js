@@ -34,7 +34,7 @@ export default function OrderListScreen(props) {
 	};
 	return (
 		<div>
-			<h1>Orders</h1>
+			<h2 class="title">Orders</h2>
 			<div>
 				{loadingDelete && <LoadingBox></LoadingBox>}
 				{errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
@@ -48,16 +48,16 @@ export default function OrderListScreen(props) {
 					<MessageBox variant="danger">{error}</MessageBox>
 				</div>
 			) : (
-				<table className="table">
+				<table className="styled-table-wide">
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>USER</th>
-							<th>DATE</th>
-							<th>TOTAL</th>
-							<th>PAID</th>
-							<th>DELIVERED</th>
-							<th>ACTIONS</th>
+							<th>User</th>
+							<th>Date</th>
+							<th>Total</th>
+							<th>Paid</th>
+							<th>Delivered</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -66,7 +66,7 @@ export default function OrderListScreen(props) {
 								<td>{order._id}</td>
 								<td>{order.user.name}</td>
 								<td>{order.createdAt.substring(0, 10)}</td>
-								<td>{order.totalPrice.toFixed(2)}</td>
+								<td>&#8369;{order.totalPrice.toFixed(2)}</td>
 								<td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
 								<td>
 									{order.isDelivered
@@ -76,7 +76,7 @@ export default function OrderListScreen(props) {
 								<td>
 									<button
 										type="button"
-										className="small"
+										className="medium"
 										onClick={() => {
 											props.history.push(`/order/${order._id}`);
 										}}
@@ -85,7 +85,7 @@ export default function OrderListScreen(props) {
 									</button>
 									<button
 										type="button"
-										className="small"
+										className="medim"
 										onClick={() => deleteHandler(order)}
 									>
 										Delete
