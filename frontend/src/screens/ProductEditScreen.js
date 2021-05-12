@@ -115,7 +115,7 @@ export default function ProductEditScreen(props) {
 										id="name"
 										type="text"
 										placeholder="Name"
-										value={name}
+										// value={name}
 										onChange={(e) => setName(e.target.value)}
 									></input>
 								</div>
@@ -125,20 +125,10 @@ export default function ProductEditScreen(props) {
 										id="price"
 										type="text"
 										placeholder="Price"
-										value={price}
+										// value={price}
 										onChange={(e) => setPrice(e.target.value)}
 									></input>
 								</div>
-								{/* <div class="input-field" >
-           									<i class="fas fa-image"></i>
-									<input
-										id="image"
-										type="text"
-										placeholder="Enter image"
-										value={image}
-										onChange={(e) => setImage(e.target.value)}
-									></input>
-								</div> */}
 								<div class="input-field" >
            								<i class="fas fa-image"></i>
 									<input
@@ -158,7 +148,7 @@ export default function ProductEditScreen(props) {
 										id="category"
 										type="text"
 										placeholder="Category"
-										value={category}
+										// value={category}
 										onChange={(e) => setCategory(e.target.value)}
 									></input>
 								</div>
@@ -168,7 +158,7 @@ export default function ProductEditScreen(props) {
 										id="brand"
 										type="text"
 										placeholder="Brand"
-										value={brand}
+										// value={brand}
 										onChange={(e) => setBrand(e.target.value)}
 									></input>
 								</div>
@@ -178,7 +168,7 @@ export default function ProductEditScreen(props) {
 										id="countInStock"
 										type="text"
 										placeholder="Count in Stock"
-										value={countInStock}
+										// value={countInStock}
 										onChange={(e) => setCountInStock(e.target.value)}
 									></input>
 								</div>
@@ -188,7 +178,7 @@ export default function ProductEditScreen(props) {
 										id="description"
 										type="text"
 										placeholder="Description"
-										value={description}
+										// value={description}
 										onChange={(e) => setDescription(e.target.value)}
 									></input>
 								</div>
