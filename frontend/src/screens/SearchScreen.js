@@ -7,26 +7,37 @@ import MessageBox from '../components/MessageBox';
 import Product from '../components/Product';
 
 export default function SearchScreen(props) {
-  const { name = 'all' } = useParams();
+  const { name = 'all', category = 'all' } = useParams();
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+
+  // const productCategoryList = useSelector((state) => state.productCategoryList);
+  // const {
+    // loading: loadingCategories,
+    // error: errorCategories,
+    // categories,
+  // } = 
+  // productCategoryList;
   useEffect(() => {
-    dispatch(listProducts({ name: name !== 'all' ? name : '' }));
-  }, [dispatch, name]);
+    dispatch(
+        listProducts({
+          name: name !== 'all' ? name : '',
+          category: category !== 'all' ? category : '',
+        })
+      );
+    }, [category, dispatch, name]);
+  
+//     const getFilterUrl = (filter) => {
+//       const filterCategory = filter.category || category;
+//       const filterName = filter.name || name;
+//       return `/search/category/${filterCategory}/name/${filterName}`;
+// };
+
   return (
-    <div>
-      <div>
-        {loading ? (
-          <LoadingBox></LoadingBox>
-        ) : error ? (
-          <MessageBox variant="danger">{error}</MessageBox>
-        ) : (
-          <div>{products.length} Results</div>
-        )}
-      </div>
+    <div className="row">
       <div className="row top">
-        <div className="col-3">
+        <div>
           {loading ? (
             <LoadingBox></LoadingBox>
           ) : error ? (
@@ -37,7 +48,7 @@ export default function SearchScreen(props) {
                 <MessageBox>No Product Found</MessageBox>
               )}</center>
               <div class="row center">
-					<div class="arrival__center">
+					            <div class="arrival__center">
                         {products.map((product) => (
                         <div class="product">
                             <div class="img__container">

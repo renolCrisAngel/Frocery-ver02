@@ -30,15 +30,15 @@ export default function ProductScreen(props) {
 							<img view src={product.image} alt={product.name} />
           				</div>
 							<div class="cart__details">
-								<h2 class = "product-title">{product.name}</h2> 
-								
+								<h2 class = "product-title">{product.name}</h2>
+								{/* <Link to={`/seller/${product.seller._id}`}>
+								{product.seller.seller.name}</Link> */}
 								<Rating
 									rating={product.seller.seller.rating}
 									numReviews={product.seller.seller.numReviews}
 								></Rating>
             					<h> &#8369;{product.price}</h>
-									{/* <Link to={`/seller/${product.seller._id}`}>
-										{product.seller.seller.name}</Link> */}
+									
 									<div>	
 									<b>Description:  </b>{product.description}
 								  	</div>
@@ -50,6 +50,7 @@ export default function ProductScreen(props) {
 										) : (
 										<span class="danger">Unavailable</span>
 									)}
+									
 										</div>{product.countInStock > 0 && (
 									<>
 											<b>Quantity:  </b>  
@@ -74,25 +75,7 @@ export default function ProductScreen(props) {
 							</>
 						)}
 					</div>
-
-					{/* <section class="section featured" id="featured">
-					<div class="featured__container container">
-        				<div class="title">
-							<h1 class="primary__title">Featured Products</h1>
-        				</div>
-						<div class="featured__center">
-          					<div class="product">
-            					<div class="img__container">
-              						<img src="./images/alaska.jpg" alt="" />
-            					</div>
-            					<div class="product__bottom">
-								</div>
-							</div>
-
-
-						</div>
-					</div> */}
-					</div>	
+				</div>	
 			)}
 		</div>
 	);	

@@ -34,10 +34,10 @@ export default function ProductsScreen() {
 					<div class="row center">
 						<div class="arrival__center">
 							{products.map((product) => (
-							<div key={product._id}>
 								<div class="product">
 									<div class="img__container">
 										<div class="card">
+											<div key={product._id}>
 											<Product key={product._id} product={product}></Product>
 										</div>
 									</div>
