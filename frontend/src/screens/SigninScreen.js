@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { signin } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import validator from 'validator';
 
 export default function SigninScreen(props) {
 	const [email, setEmail] = useState('');
@@ -27,6 +28,21 @@ export default function SigninScreen(props) {
 			props.history.push(redirect);
 		}
 	}, [props.history, redirect, userInfo]);
+
+	const [emailError, setEmailError] = useState('')
+	const [fontColor, setColor] = useState('');
+  	const validateEmail = (e) => {
+    var email = e.target.value
+  
+    if (validator.isEmail(email)) {
+      setEmailError('Valid Email ')
+	  setColor('green');
+	  setEmail(email)
+    } else {
+      setEmailError('Enter valid Email!')
+	  setColor('red');
+    }
+  }
 	return (
 		<div class="container">
 	 		 <div class="forms-container">
@@ -44,9 +60,14 @@ export default function SigninScreen(props) {
 							id="email"
 							placeholder="Email"
 							required
-							onChange={(e) => setEmail(e.target.value)}
-						></input>
+							onChange={(e) => validateEmail(e)}
+							// onChange={(e) => setEmail(e.target.value)}
+						></input> <br/>
+						<span style={{
+						  color: fontColor,
+						}}>{emailError}</span>
 					</div>
+					<br/>
 					<div class="input-field">
 						<i class="fas fa-lock"></i>
 						<input

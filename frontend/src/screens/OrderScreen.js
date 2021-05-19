@@ -91,6 +91,7 @@ export default function OrderScreen(props) {
 								<span class="fas fa-shipping-fast"></span> <b>Delivery Details</b>
 								<p>
 									<strong>Name:</strong> {order.shippingAddress.fullName} <br/>
+									<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1DsxjvdOfxmmb-s8eZbbcoQA-TpRoGYzM&z=13.5" width="800" height="480"></iframe> <br/>
 									<strong>Address: </strong> {order.shippingAddress.address},
 									{order.shippingAddress.city},{' '}
 									{order.shippingAddress.postalCode}, {' '}

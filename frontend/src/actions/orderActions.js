@@ -112,6 +112,10 @@ export const listOrderMine = () => async (dispatch, getState) => {
 };
 
 export const listOrders = ({ seller = '' }) => async (dispatch, getState) => {
+
+	let i = 0;
+	let TotalRevenue = 0
+
 	dispatch({ type: ORDER_LIST_REQUEST });
 	const {
 		userSignin: { userInfo },
@@ -120,8 +124,13 @@ export const listOrders = ({ seller = '' }) => async (dispatch, getState) => {
 		const { data } = await Axios.get(`/api/orders?seller=${seller}`, {
 			headers: { Authorization: `Bearer ${userInfo.token}` },
 		});
-		console.log(data);
-		dispatch({ type: ORDER_LIST_SUCCESS, payload: data });
+		for(i = 0; i < data.length; i++){
+			TotalRevenue += data[i]['taxPrice'];
+		}
+		TotalRevenue = TotalRevenue/2;
+		console.log(TotalRevenue);
+
+		dispatch({ type: ORDER_LIST_SUCCESS, payload: data,TotalRevenue: TotalRevenue });
 	} catch (error) {
 		const message =
 			error.response && error.response.data.message

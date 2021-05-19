@@ -28,7 +28,8 @@ import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productsActions';
 import LoadingBox from './components/LoadingBox';
 import MessageBox from './components/MessageBox';
-
+import RevenueScreen from './screens/RevenueScreen';
+import validator from 'validator';
 
 function App() {
 	const cart = useSelector((state) => state.cart);
@@ -51,6 +52,17 @@ function App() {
 	useEffect(() => {
 	  dispatch(listProductCategories());
 	}, [dispatch]);
+	const [emailError, setEmailError] = useState('')
+	
+  const validateEmail = (e) => {
+    var email = e.target.value
+  
+    if (validator.isEmail(email)) {
+      setEmailError('Valid Email :)')
+    } else {
+      setEmailError('Enter valid Email!')
+    }
+  }
 
 	return (
 		<BrowserRouter>
@@ -90,9 +102,9 @@ function App() {
 									Admin <i className="fa fa-caret-down"></i>
 								</Link>
 								<ul className="dropdown-content">
-									<li>
+									{/* <li>
 										<Link to="/productlist">Products</Link>
-									</li>
+									</li> */}
 									<li>
 										<Link to="/orderlist">Orders</Link>
 									</li>
@@ -113,6 +125,9 @@ function App() {
 									</li>
 									<li>
 										<Link to="/orderlist/seller">Orders</Link>
+									</li>
+									<li>
+										<Link to="/revenue/seller">Revenue</Link>
 									</li>
 								</ul>
 							</div>
@@ -218,6 +233,10 @@ function App() {
 					<SellerRoute
 						path="/orderlist/seller"
 						component={OrderListScreen}
+					></SellerRoute>
+					<SellerRoute
+						path="/revenue/seller"
+						component={RevenueScreen}
 					></SellerRoute>
 					<Route path="/seller/:id" component={SellerScreen}></Route>
 					<Route path="/orderhistory" component={OrderHistoryScreen}></Route>
