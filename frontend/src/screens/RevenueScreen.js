@@ -54,34 +54,34 @@ export default function RevenueScreen(props) {
 							<th>ID</th>
 							<th>User</th>
 							<th>Date</th>
-							<th>Total</th>
-                            <th>Sub-Revenue</th>
 							<th>Paid</th>
 							<th>Delivered</th>
+							<th>Tax</th>
+							<th>Revenue</th>
+							<th>Total</th>
 						</tr>
 					</thead>
 					<tbody>
-						{
-                        orders.map((order) => (
+						{orders.map((order) => (
 							<tr key={order._id}>
 								<td>{order._id}</td>
 								<td>{order.user.name}</td>
 								<td>{order.createdAt.substring(0, 10)}</td>
-								<td>&#8369;{order.totalPrice.toFixed(2)}</td>
-                                <td>&#8369;{order.taxPrice.toFixed(2)/2}</td>
 								<td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
 								<td>
 									{order.isDelivered
 										? order.deliveredAt.substring(0, 10)
 										: 'No'}
 								</td>
+								<td>&#8369;{order.taxPrice.toFixed(2)}</td>
+								<td>&#8369;{(order.totalPrice - order.taxPrice).toFixed(2)}</td>
+								<td>&#8369;{order.totalPrice.toFixed(2)}</td>
 							</tr>
-						))
-                        }
+						))}
 					</tbody>
 				</table>
 			)}
-            {/* <h1>Revenue Income: </h1> */}
+			{/* <h1>Revenue Income: </h1> */}
 		</div>
 	);
 }
