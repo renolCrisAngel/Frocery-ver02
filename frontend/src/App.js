@@ -30,6 +30,7 @@ import LoadingBox from './components/LoadingBox';
 import MessageBox from './components/MessageBox';
 import RevenueScreen from './screens/RevenueScreen';
 import validator from 'validator';
+import DashboardScreen from './screens/DashboardScreen';
 
 function App() {
 	const cart = useSelector((state) => state.cart);
@@ -110,6 +111,9 @@ function App() {
 									</li>
 									<li>
 										<Link to="/userlist">Users</Link>
+									</li>
+									<li>
+										<Link to="/dashboard">Dashboard</Link>
 									</li>
 								</ul>
 							</div>
@@ -226,6 +230,10 @@ function App() {
 						path="/user/:id/edit"
 						component={UserEditScreen}
 					></AdminRoute>
+					<AdminRoute
+            			path="/dashboard"
+           				component={DashboardScreen}
+         			></AdminRoute>
 					<SellerRoute
 						path="/productlist/seller"
 						component={ProductListScreen}
