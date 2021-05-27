@@ -88,68 +88,78 @@ export default function OrderScreen(props) {
 					<ul>
 						<li>
 							<div className="carddetails">
-								<span class="fas fa-shipping-fast"></span> <b>Delivery Details</b>
+								<span class="fas fa-shipping-fast"></span>{' '}
+								<b>Delivery Details</b>
 								<p>
-									<strong>Name:</strong> {order.shippingAddress.fullName} <br/>
-									<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1DsxjvdOfxmmb-s8eZbbcoQA-TpRoGYzM&z=13.5" width="800" height="480"></iframe> <br/>
+									<strong>Name:</strong> {order.shippingAddress.fullName} <br />
+									{userInfo && userInfo.isAdmin && (
+										<div>
+											<iframe
+												src="https://www.google.com/maps/d/u/0/embed?mid=1DsxjvdOfxmmb-s8eZbbcoQA-TpRoGYzM&z=13.5"
+												width="800"
+												height="480"
+											></iframe>{' '}
+											<br />
+										</div>
+									)}
 									<strong>Address: </strong> {order.shippingAddress.address},
 									{order.shippingAddress.city},{' '}
-									{order.shippingAddress.postalCode}, {' '}
+									{order.shippingAddress.postalCode},{' '}
 									{order.shippingAddress.country}
-
-								{order.isDelivered ? (
-									<MessageBox variant="success">
-										Delivered at {order.deliveredAt}
-									</MessageBox>
-								) : (
-									<MessageBox variant="danger">Not Delivered</MessageBox>
-								)}
+									{order.isDelivered ? (
+										<MessageBox variant="success">
+											Delivered at {order.deliveredAt}
+										</MessageBox>
+									) : (
+										<MessageBox variant="danger">Not Delivered</MessageBox>
+									)}
 									<strong>Payment Method:</strong> {order.paymentMethod}
-								{order.isPaid ? (
-									<MessageBox variant="success">
-										Paid at {order.paidAt}
-									</MessageBox>
-								) : (
-									<MessageBox variant="danger">Not Paid</MessageBox>
-								)}
+									{order.isPaid ? (
+										<MessageBox variant="success">
+											Paid at {order.paidAt}
+										</MessageBox>
+									) : (
+										<MessageBox variant="danger">Not Paid</MessageBox>
+									)}
 								</p>
 							</div>
 						</li>
-								
-						<table class="styled-table">
-						<thead>
-							<tr>
-								<th><span class="fas fa-shopping-cart"></span> <b>Order Details</b></th>
-							</tr>
-						</thead>
-						<tbody>
-							{order.orderItems.map((item) => (
-								<tr key={item.product} className="border">
-									<td>
-										<img
-											src={item.image}
-											alt={item.name}
-											className="cart-img"
-										></img>
-									</td>
-									<td>
-										<Link to={`/product/${item.product}`}>{item.name}</Link>
-											<div>&#8369;{item.price}</div>
-												<div>x{item.qty}</div>
-									</td>
 
-									<td>		
-										<div>
-											<h1>
-												&#8369;{item.qty * item.price}
-											</h1>
-										</div>
-									</td>
+						<table class="styled-table">
+							<thead>
+								<tr>
+									<th>
+										<span class="fas fa-shopping-cart"></span>{' '}
+										<b>Order Details</b>
+									</th>
 								</tr>
-						    ))}
-						</tbody>
+							</thead>
+							<tbody>
+								{order.orderItems.map((item) => (
+									<tr key={item.product} className="border">
+										<td>
+											<img
+												src={item.image}
+												alt={item.name}
+												className="cart-img"
+											></img>
+										</td>
+										<td>
+											<Link to={`/product/${item.product}`}>{item.name}</Link>
+											<div>&#8369;{item.price}</div>
+											<div>x{item.qty}</div>
+										</td>
+
+										<td>
+											<div>
+												<h1>&#8369;{item.qty * item.price}</h1>
+											</div>
+										</td>
+									</tr>
+								))}
+							</tbody>
 						</table>
-						</ul>
+					</ul>
 				</div>
 				<div className="cart-col-1">
 					<div className="card card-body">

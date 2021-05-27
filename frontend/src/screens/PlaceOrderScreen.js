@@ -20,7 +20,7 @@ export default function PlaceOrderScreen(props) {
 		cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
 	);
 	cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10);
-	cart.taxPrice = toPrice(0.15 * cart.itemsPrice);
+	cart.taxPrice = toPrice(0.12 * cart.itemsPrice);
 	cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
 	const dispatch = useDispatch();
@@ -41,22 +41,25 @@ export default function PlaceOrderScreen(props) {
 					<ul>
 						<li>
 							<div className="cardorder">
-								<span class="fas fa-shipping-fast"></span> <b>Delivery Details</b>
+								<span class="fas fa-shipping-fast"></span>{' '}
+								<b>Delivery Details</b>
 								<p>
-									<strong>Name:</strong> {cart.shippingAddress.fullName} <br/>
+									<strong>Name:</strong> {cart.shippingAddress.fullName} <br />
 									<strong>Address: </strong> {cart.shippingAddress.address},
-									{cart.shippingAddress.city},{' '}
-									{cart.shippingAddress.postalCode}, {' '}
-									{cart.shippingAddress.country} <br/>
+									{cart.shippingAddress.city}, {cart.shippingAddress.postalCode}
+									, {cart.shippingAddress.country} <br />
 									<strong>Payment Method: </strong> {cart.paymentMethod}
 								</p>
 							</div>
 						</li>
-						</ul>
-						<table class="styled-table">
+					</ul>
+					<table class="styled-table">
 						<thead>
 							<tr>
-								<th><span class="fas fa-shopping-cart"></span> <b>Order Details</b></th>
+								<th>
+									<span class="fas fa-shopping-cart"></span>{' '}
+									<b>Order Details</b>
+								</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -71,21 +74,19 @@ export default function PlaceOrderScreen(props) {
 									</td>
 									<td>
 										<Link to={`/product/${item.product}`}>{item.name}</Link>
-											<div>&#8369;{item.price}</div>
-												<div>x{item.qty}</div>
+										<div>&#8369;{item.price}</div>
+										<div>x{item.qty}</div>
 									</td>
 
-									<td>		
+									<td>
 										<div>
-											<h1>
-												&#8369;{item.qty * item.price}
-											</h1>
+											<h1>&#8369;{item.qty * item.price}</h1>
 										</div>
 									</td>
 								</tr>
-						    ))}
+							))}
 						</tbody>
-						</table>
+					</table>
 				</div>
 				<div className="cart-col-1">
 					<div className="card card-body">
@@ -96,19 +97,19 @@ export default function PlaceOrderScreen(props) {
 							<li>
 								<div className="row">
 									<div>Items</div>
-										<div>&#8369;{cart.itemsPrice.toFixed(1)}</div>
+									<div>&#8369;{cart.itemsPrice.toFixed(1)}</div>
 								</div>
 							</li>
 							<li>
 								<div className="row">
 									<div>Shipping</div>
-										<div>&#8369;{cart.shippingPrice.toFixed(1)}</div>
+									<div>&#8369;{cart.shippingPrice.toFixed(1)}</div>
 								</div>
 							</li>
 							<li>
 								<div className="row">
 									<div>Tax</div>
-										<div> &#8369;{cart.taxPrice.toFixed(1)}</div>
+									<div> &#8369;{cart.taxPrice.toFixed(1)}</div>
 								</div>
 							</li>
 							<li>

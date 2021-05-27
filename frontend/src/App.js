@@ -43,27 +43,27 @@ function App() {
 	const signoutHandler = () => {
 		dispatch(signout());
 	};
-	
+
 	const productCategoryList = useSelector((state) => state.productCategoryList);
 	const {
-	  loading: loadingCategories,
-	  error: errorCategories,
-	  categories,
+		loading: loadingCategories,
+		error: errorCategories,
+		categories,
 	} = productCategoryList;
 	useEffect(() => {
-	  dispatch(listProductCategories());
+		dispatch(listProductCategories());
 	}, [dispatch]);
-	const [emailError, setEmailError] = useState('')
-	
-  const validateEmail = (e) => {
-    var email = e.target.value
-  
-    if (validator.isEmail(email)) {
-      setEmailError('Valid Email :)')
-    } else {
-      setEmailError('Enter valid Email!')
-    }
-  }
+	const [emailError, setEmailError] = useState('');
+
+	const validateEmail = (e) => {
+		var email = e.target.value;
+
+		if (validator.isEmail(email)) {
+			setEmailError('Valid Email :)');
+		} else {
+			setEmailError('Enter valid Email!');
+		}
+	};
 
 	return (
 		<BrowserRouter>
@@ -71,23 +71,23 @@ function App() {
 				<header className="row">
 					<div>
 						<button
-              				type="button"
-              				className="open-sidebar"
-              				onClick={() => setSidebarIsOpen(true)}
-            			>
-              				<i className="fa fa-bars"></i>
-            			</button>
+							type="button"
+							className="open-sidebar"
+							onClick={() => setSidebarIsOpen(true)}
+						>
+							<i className="fa fa-bars"></i>
+						</button>
 						<Link className="brand" to="/">
 							Frocery
 						</Link>
 					</div>
 					<div>
 						<Route
-              				render={({ history }) => (
-                				<SearchBox history={history}></SearchBox>
-              				)}
-           				 ></Route>
-          			</div>
+							render={({ history }) => (
+								<SearchBox history={history}></SearchBox>
+							)}
+						></Route>
+					</div>
 					<div>
 						<Link to="/products">Shop</Link>
 						<Link to="/cart">
@@ -103,9 +103,9 @@ function App() {
 									Admin <i className="fa fa-caret-down"></i>
 								</Link>
 								<ul className="dropdown-content">
-									{/* <li>
+									<li>
 										<Link to="/productlist">Products</Link>
-									</li> */}
+									</li>
 									<li>
 										<Link to="/orderlist">Orders</Link>
 									</li>
@@ -161,35 +161,35 @@ function App() {
 					</div>
 				</header>
 				<aside className={sidebarIsOpen ? 'open' : ''}>
-          			<ul className="categories">
-            			<li>
+					<ul className="categories">
+						<li>
 							<h2 class="title">Categories</h2>
-              				<button
-                				onClick={() => setSidebarIsOpen(false)}
-                				className="close-sidebar"
-                				type="button"
-             				>
-                				<i className="fa fa-times"></i>
-              				</button>
-            			</li>
-            			{loadingCategories ? (
-              				<LoadingBox></LoadingBox>
-            			) : errorCategories ? (
-              				<MessageBox variant="danger">{errorCategories}</MessageBox>
-           				) : (
-             			 	categories.map((c) => (
-                				<li key={c}>
-                  					<Link
-                    					to={`/search/category/${c}`}
-                    					onClick={() => setSidebarIsOpen(false)}
-                  					>
-                    					{c}
-                 				 	</Link>
-                				</li>
-              				))
-            			)}
-          			</ul>
-        		</aside>
+							<button
+								onClick={() => setSidebarIsOpen(false)}
+								className="close-sidebar"
+								type="button"
+							>
+								<i className="fa fa-times"></i>
+							</button>
+						</li>
+						{loadingCategories ? (
+							<LoadingBox></LoadingBox>
+						) : errorCategories ? (
+							<MessageBox variant="danger">{errorCategories}</MessageBox>
+						) : (
+							categories.map((c) => (
+								<li key={c}>
+									<Link
+										to={`/search/category/${c}`}
+										onClick={() => setSidebarIsOpen(false)}
+									>
+										{c}
+									</Link>
+								</li>
+							))
+						)}
+					</ul>
+				</aside>
 				<main>
 					<Route
 						path="/product/:id/edit"
@@ -197,20 +197,20 @@ function App() {
 						exact
 					></Route>
 					<Route
-            			path="/search/category/:category"
-            			component={SearchScreen}
-            			exact
-          			></Route>
-          			<Route
-           		 		path="/search/category/:category/name/:name"
-            			component={SearchScreen}
-            			exact
-          			></Route>
+						path="/search/category/:category"
+						component={SearchScreen}
+						exact
+					></Route>
 					<Route
-            			path="/search/name/:name?"
-            			component={SearchScreen}
-            			exact
-         			 ></Route>
+						path="/search/category/:category/name/:name"
+						component={SearchScreen}
+						exact
+					></Route>
+					<Route
+						path="/search/name/:name?"
+						component={SearchScreen}
+						exact
+					></Route>
 					<AdminRoute
 						path="/productlist"
 						component={ProductListScreen}
@@ -231,9 +231,9 @@ function App() {
 						component={UserEditScreen}
 					></AdminRoute>
 					<AdminRoute
-            			path="/dashboard"
-           				component={DashboardScreen}
-         			></AdminRoute>
+						path="/dashboard"
+						component={DashboardScreen}
+					></AdminRoute>
 					<SellerRoute
 						path="/productlist/seller"
 						component={ProductListScreen}
@@ -260,59 +260,86 @@ function App() {
 					<Route path="/" component={HomeScreen} exact></Route>
 				</main>
 				<div class="footer">
-    				<div class="footer-content">
+					<div class="footer-content">
 						<div class="footer-section about">
-        					<h2>Frocery</h2>
-        					<p class="text-justify">As we staying at home, a lot of us prefer to or need to order groceries online. Maybe you’re immunocompromised and don’t want to risk leaving the house? beacuse of the pandemic
-							Whatever your reason, Frocery act as online service that can help you — yes, even during these trying times.
-       						</p>
-        					<div class="contact">
-          						<span><i class="fas fa-phone"></i> &nbsp; (02) 005 1221</span>
-          							<span><i class="fas fa-envelope"></i> &nbsp; frocery@gmail.com</span>
-       						 </div>
-        					<div class="socials">
-								<a href="/#"><i class="fab fa-facebook"></i></a>
-								<a href="/#"><i class="fab fa-instagram"></i></a>
-								<a href="/#"><i class="fab fa-twitter"></i></a>
-								<a href="/#"><i class="fab fa-youtube"></i></a>
+							<h2>Frocery</h2>
+							<p class="text-justify">
+								As we staying at home, a lot of us prefer to or need to order
+								groceries online. Maybe you’re immunocompromised and don’t want
+								to risk leaving the house? beacuse of the pandemic Whatever your
+								reason, Frocery act as online service that can help you — yes,
+								even during these trying times.
+							</p>
+							<div class="contact">
+								<span>
+									<i class="fas fa-phone"></i> &nbsp; (02) 005 1221
+								</span>
+								<span>
+									<i class="fas fa-envelope"></i> &nbsp; frocery@gmail.com
+								</span>
+							</div>
+							<div class="socials">
+								<a href="/#">
+									<i class="fab fa-facebook"></i>
+								</a>
+								<a href="/#">
+									<i class="fab fa-instagram"></i>
+								</a>
+								<a href="/#">
+									<i class="fab fa-twitter"></i>
+								</a>
+								<a href="/#">
+									<i class="fab fa-youtube"></i>
+								</a>
 							</div>
 						</div>
-      					<div class="footer-section links"><div class="footerrun">
-							<h2>Help</h2>
-							<br />
-							<ul>
-								<a href="/#">
-									<li>Guide</li>
-								</a>
-								<a href="/#">
-									<li>Partnered Stores</li>
-								</a>
-								<a href="/#">
-									<li>Frequently Asked Questions</li>
-								</a>
-								<a href="/#">
-									<li>Privacy Policy</li>
-								</a>
-								<a href="/#">
-									<li>Terms and Conditions</li>
-								</a>
+						<div class="footer-section links">
+							<div class="footerrun">
+								<h2>Help</h2>
+								<br />
+								<ul>
+									<a href="/#">
+										<li>Guide</li>
+									</a>
+									<a href="/#">
+										<li>Partnered Stores</li>
+									</a>
+									<a href="/#">
+										<li>Frequently Asked Questions</li>
+									</a>
+									<a href="/#">
+										<li>Privacy Policy</li>
+									</a>
+									<a href="/#">
+										<li>Terms and Conditions</li>
+									</a>
 								</ul>
 							</div>
 						</div>
 						<div class="footer-section contact-form">
-							<h2 class='contact-us'>Contact us</h2>
+							<h2 class="contact-us">Contact us</h2>
 							<br />
 							<form action="index.html" method="post">
-								<input type="email" name="email" class="text-input contact-input" placeholder="Your email address..."></input>
-								<textarea rows="4" name="message" class="text-input contact-input" placeholder="Your message..."></textarea>
+								<input
+									type="email"
+									name="email"
+									class="text-input contact-input"
+									placeholder="Your email address..."
+								></input>
+								<textarea
+									rows="4"
+									name="message"
+									class="text-input contact-input"
+									placeholder="Your message..."
+								></textarea>
 								<button type="submit" class="btn btn-big contact-btn">
 									<i class="fas fa-envelope"></i>
-										Send
+									Send
 								</button>
-    						 </form>
-						</div>						
+							</form>
+						</div>
 					</div>
-   				 </div>
+				</div>
 			</div>
 		</BrowserRouter>
 	);
