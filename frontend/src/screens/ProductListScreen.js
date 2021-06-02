@@ -92,7 +92,7 @@ export default function ProductListScreen(props) {
 							<th>Price</th>
 							<th>Category</th>
 							<th>Brand</th>
-							<th>Actions</th>
+							{userInfo && userInfo.isSeller && <th>Actions</th>}
 						</tr>
 					</thead>
 					<tbody>
@@ -103,22 +103,24 @@ export default function ProductListScreen(props) {
 								<td>&#8369;{product.price}</td>
 								<td>{product.category}</td>
 								<td>{product.brand}</td>
-								<td>
-									<button
-										type="button"
-										className="medium"
-										onClick={() => editHandler(product)}
-									>
-										Edit
-									</button>
-									<button
-										type="button"
-										className="medium"
-										onClick={() => deleteHandler(product)}
-									>
-										Delete
-									</button>
-								</td>
+								{userInfo && userInfo.isSeller && (
+									<td>
+										<button
+											type="button"
+											className="medium"
+											onClick={() => editHandler(product)}
+										>
+											Edit
+										</button>
+										<button
+											type="button"
+											className="medium"
+											onClick={() => deleteHandler(product)}
+										>
+											Delete
+										</button>
+									</td>
+								)}
 							</tr>
 						))}
 					</tbody>
